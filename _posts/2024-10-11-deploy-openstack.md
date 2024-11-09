@@ -98,20 +98,19 @@ hostname-compute2
 
 [deployment]
 localhost ansible_connection=local
-
 ```
+
 > **Note:** ganti **hostname** dengan hostname controller dan compute anda.
 
 6. Konfigurasi ansible.cfg.
 ```
 $ sudo mkdir -p /etc/ansible
 $ sudo vim /etc/ansible/ansible.cfg
-...
+
 [defaults]
 host_key_checking=False
 pipelining=True
 forks=100
-...
 ```
 7. Uji konektivitas Ansible
 ```
@@ -137,7 +136,6 @@ enable_horizon: "yes"
 enable_neutron_provider_networks: "yes"
 enable_cinder: "yes"
 enable_cinder_backend_lvm: "yes"
-
 ```
 > **Note:** ganti "**yes**" dengan "**no**" jika ingin menonaktifkan service nya.
 
@@ -156,16 +154,4 @@ $ source /etc/kolla/admin-openrc.sh
 ```
 $ openstack service list 
 ```
-+----------------------------------+-------------+----------------+
-| ID                               | Name        | Type           |
-+----------------------------------+-------------+----------------+
-| 2016e0d3e67b47f9ab8941f18912b4ed | heat        | orchestration  |
-| 3cc9267de0774fc295f9ff99ad7098ad | glance      | image          |
-| 72f7b5292bbd4cf3aa2594ffe99cf409 | nova_legacy | compute_legacy |
-| 7bbcedc7b0504d79b7b15e4c3619374b | keystone    | identity       |
-| 9bea6c9b9a954d82a0531ba70b0331a6 | heat-cfn    | cloudformation |
-| 9e8e74f5a48b493097014aafe5d82268 | neutron     | network        |
-| b4ed42fee5c64ba18b96a6603dbb5b36 | placement   | placement      |
-| c1f1b5c9fbc24b2ea564e7d8ce121ef9 | nova        | compute        |
-| f03eb26e51694df79fd86174e810f10c | cinderv3    | volumev3       |
-+----------------------------------+-------------+----------------+
+> **Note:** Pastikan Service inti yang diinginkan sudah active.
