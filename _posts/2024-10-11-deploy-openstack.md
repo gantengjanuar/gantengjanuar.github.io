@@ -1,5 +1,5 @@
 ---
-title: 'How To Deploy OpenStack'
+title: 'How To Deploy OpenStack With Kolla-Ansible'
 date: 2024-10-11
 permalink: /posts/2024/11/deploy-openstack/
 tags:
@@ -9,7 +9,7 @@ tags:
 ---
 
 # **OpenStack Deployment With Kolla-Ansible**
-Hallo semuanya!!! Disini saya akan memberikan langkah-langkah deploy openstack menggunakan Kolla-Ansible.
+Hallo semuanya!! Disini saya akan memberikan langkah-langkah deploy openstack menggunakan Kolla-Ansible.
 Sebelum masuk ke langkah langkah, kita harus kenalan dulu nih sama yang namanya Openstack dan Kolla ansible, sebenernya kedua itu apa sih?
 
 
@@ -64,16 +64,16 @@ $ pip install git+https://opendev.org/openstack/kolla-ansible@stable/2023.1
 $ kolla-ansible install-deps
 ```
 4. Buat direktori /etc/kolla dan copy konfigurasi yang dibutuhkan.
+
 ```
 $ sudo mkdir -p /etc/kolla
 $ sudo chown $USER:$USER /etc/kolla
 $ cp -r kolla-venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
 ```
+
 5. Edit inventory Multinode
 ```
 $ cp kolla-venv/share/kolla-ansible/ansible/inventory/* .
-```
-```
 $ vim ~/multinode
 ...
 [control]
@@ -120,7 +120,7 @@ $ ansible -i multinode all -m ping
 $ kolla-genpwd
 $ cat /etc/kolla/passwords.yml
 ```
-8. konfigurasi globals.yml.
+9. konfigurasi globals.yml.
 ```
 $ sudo vim /etc/kolla/globals.yml
 ---
@@ -141,20 +141,21 @@ enable_cinder_backend_lvm: "yes"
 ```
 > **Note:** ganti "**yes**" dengan "**no**" jika ingin menonaktifkan service nya.
 
-9. Lakukan Booststrap , pre deploy , Deployment dan Post deploy.
+10. Lakukan Booststrap , pre deploy , Deployment dan Post deploy.
 ```
 $ kolla-ansible -i ./multinode prechecks
 $ kolla-ansible -i ./multinode deploy
 $ kolla-ansible -i ./multinode post-deploy
 ``` 
 > **Note:**Proses ini memakan waktu berapa menit jadi harap sabar.
-10. Lakukan Instalasi openstackclient dan verifikasi Openstack
+11. Lakukan Instalasi openstackclient dan verifikasi Openstack
 ```
 $ pip install openstackclient
 $ source /etc/kolla/admin-openrc.sh
 ```
 ```
 $ openstack service list 
+```
 +----------------------------------+-------------+----------------+
 | ID                               | Name        | Type           |
 +----------------------------------+-------------+----------------+
@@ -168,4 +169,3 @@ $ openstack service list
 | c1f1b5c9fbc24b2ea564e7d8ce121ef9 | nova        | compute        |
 | f03eb26e51694df79fd86174e810f10c | cinderv3    | volumev3       |
 +----------------------------------+-------------+----------------+
-```
