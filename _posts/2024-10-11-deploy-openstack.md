@@ -1,7 +1,7 @@
 ---
 title: 'How To Deploy OpenStack'
 date: 2024-10-11
-permalink: /posts/2024/10/deploy-openstack/
+permalink: /posts/2024/11/deploy-openstack/
 tags:
   - Openstack
   - Deployment
