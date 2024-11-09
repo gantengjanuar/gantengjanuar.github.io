@@ -1,6 +1,6 @@
 ---
-title: "Portfolio item number 2"
-excerpt: "Short description of portfolio item number 2 <br/><img src='/images/500x300.png'>"
+title: "Project: Creating an online business"
+excerpt: "Membuat bisnis online yang berfokus di Joki Game Online <br/><img src='/images/Joki-1.png'>"
 collection: portfolio
 ---
 
