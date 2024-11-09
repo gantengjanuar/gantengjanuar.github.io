@@ -75,7 +75,7 @@ $ cp -r kolla-venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
 ```
 $ cp kolla-venv/share/kolla-ansible/ansible/inventory/* .
 $ vim ~/multinode
-...
+
 [control]
 hostname-controller
 
@@ -96,7 +96,7 @@ hostname-compute2
 
 [deployment]
 localhost ansible_connection=local
-...
+
 ```
 > **Note:** ganti **hostname** dengan hostname controller dan compute anda.
 
@@ -123,7 +123,6 @@ $ cat /etc/kolla/passwords.yml
 9. konfigurasi globals.yml.
 ```
 $ sudo vim /etc/kolla/globals.yml
----
 
 kolla_base_distro: "ubuntu"
 openstack_release: "2023.1"
@@ -137,7 +136,6 @@ enable_neutron_provider_networks: "yes"
 enable_cinder: "yes"
 enable_cinder_backend_lvm: "yes"
 
----
 ```
 > **Note:** ganti "**yes**" dengan "**no**" jika ingin menonaktifkan service nya.
 
