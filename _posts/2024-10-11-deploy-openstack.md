@@ -77,7 +77,8 @@ $ cp -r kolla-venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
 ```
 $ cp kolla-venv/share/kolla-ansible/ansible/inventory/* .
 $ vim ~/multinode
-
+``` 
+```
 [control]
 hostname-controller
 
@@ -145,7 +146,7 @@ $ kolla-ansible -i ./multinode prechecks
 $ kolla-ansible -i ./multinode deploy
 $ kolla-ansible -i ./multinode post-deploy
 ``` 
-> **Note:**Proses ini memakan waktu berapa menit jadi harap sabar.
+> **Note:** Proses ini memakan waktu berapa menit jadi harap sabar.
 11. Lakukan Instalasi openstackclient dan verifikasi Openstack
 ```
 $ pip install openstackclient
