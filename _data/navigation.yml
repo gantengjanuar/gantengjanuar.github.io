@@ -21,7 +21,7 @@ main:
     url: /year-archive/
 
   - title: "Projects"
-    url: /portofolio/
+    url: /projects/
 
   - title: "CV"
     url: /files/Resume.pdf
