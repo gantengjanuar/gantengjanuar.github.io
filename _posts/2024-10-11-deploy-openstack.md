@@ -78,7 +78,7 @@ $ cp -r kolla-venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
 $ cp kolla-venv/share/kolla-ansible/ansible/inventory/* .
 $ vim ~/multinode
 ``` 
-```
+
 [control]
 hostname-controller
 
@@ -99,7 +99,7 @@ hostname-compute2
 
 [deployment]
 localhost ansible_connection=local
-```
+
 
 > **Note:** ganti **hostname** dengan hostname controller dan compute anda.
 
