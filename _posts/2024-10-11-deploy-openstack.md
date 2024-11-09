@@ -8,6 +8,8 @@ tags:
   - Tutorial
 ---
 
+![kolla openstack](/images/kolla-openstack.png)
+
 # **OpenStack Deployment With Kolla-Ansible**
 Hallo semuanya!! Disini saya akan memberikan langkah-langkah deploy openstack menggunakan Kolla-Ansible.
 Sebelum masuk ke langkah langkah, kita harus kenalan dulu nih sama yang namanya Openstack dan Kolla ansible, sebenernya kedua itu apa sih?
