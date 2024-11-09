@@ -16,12 +16,12 @@ main:
     
  # - title: "Portfolio"
  #   url: /portfolio/
-        
+  
   - title: "Blog Posts"
     url: /year-archive/
 
   - title: "Projects"
-    url: /markdown/
+    url: /portofolio/
 
   - title: "CV"
     url: /files/Resume.pdf
