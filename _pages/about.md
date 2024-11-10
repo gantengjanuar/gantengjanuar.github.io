@@ -13,7 +13,9 @@ redirect_from:
 
 👨🏻‍💻 My interest in IT is quite high, especially in the field of Cloud engineer and DevOps engineer.
 
-✨ I'm also really interested in other IT fields, like programming, networking, and cybersecurity. And I'm really excited about new technologies, like artificial intelligence, the Internet of Things, and how technology can be used to solve everyday problems!
+✨ I'm also really interested in other IT fields, like programming, networking, and cybersecurity.
+
+🤖 I'm really excited about new technologies, like artificial intelligence, the Internet of Things, and how technology can be used to solve everyday problems!
 
 📚 I always enjoy learning new things, especially those related to technological developments. My hope is to continue developing my skills in this field and one day contribute to the IT industry professionally.
 
