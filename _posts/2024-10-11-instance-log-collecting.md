@@ -25,7 +25,7 @@ Namun, dengan kompleksitas yang dihadapi dalam pengoperasian cluster OpenStack, 
 
 Dengan menerapkan alat seperti ElasticSearch, perusahaan dapat mengkonsolidasikan log dari berbagai instance ke dalam satu platform. Ini memungkinkan tim operasional untuk memantau kondisi sistem secara real-time, menganalisis data log dengan lebih efisien, dan mengambil tindakan yang diperlukan berdasarkan informasi yang diperoleh. Selain itu, penggunaan metrik dan alerting akan meningkatkan kemampuan pemantauan, memungkinkan deteksi masalah lebih awal dan pengambilan keputusan yang lebih cepat.
 
-## Tools yang Digunakan
+## Tools yang Digunakan:
 * OpenStack	 	      - v7.2.1
 * kolla-ansible 		- v2023.1
 * Elasticsearch 		- v 8.15.3
@@ -463,3 +463,338 @@ $ openstack server list
 ```
 $ ssh -o 'PubkeyAcceptedKeyTypes +ssh-rsa' ubuntu@20.13.13.119
 ```
+
+## Install Filebeat di kedua Instance
+1.Tambahkan Kunci GPG untuk Elastic.
+```
+$ wget -qo - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+```
+
+2.Tambahkan repository Elastic ke source list
+```
+$ echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
+```
+
+3.Update dan install Filebeat.
+```
+$ sudo apt-get update && sudo apt-get upgrade
+$ sudo apt-get install filebeat
+```
+
+4.Jalankan Filebeat dan verifikasi.
+```
+$ sudo systemctl enable filebeat
+$ sudo systemctl start filebeat
+$ sudo systemctl status filebeat
+```
+
+## Install Metricbeat di kedua Instance
+1.Update dan install Metricbeat.
+```
+$ sudo apt-get update && sudo apt-get upgrade
+$ sudo apt-get install metricbeat
+```
+
+2.Enable modul system agar metricbeat bisa mengambil metrics system.
+```
+$ sudo metricbeat modules enable system
+```
+
+3.Konfigurasi supaya bisa menarik metrik yang kita inginkan.
+```
+$ sudo nano /etc/metricbeat/modules.d/system.yml
+
+- module: system
+  period: 10s
+  metricsets:
+    - cpu
+  - load
+  - memory
+  - network
+  - process
+  - process_summary
+  - socket_summary
+  - users
+```
+
+4.Jalankan dan verifikasi.
+```
+$ sudo systemctl enable metricbeat
+$ sudo systemctl start metricbeat
+$ sudo systemctl enable metricbeat
+```
+
+## Konfigurasi Filebeat, Metricbeat, dan Logstash
+Selesai konfigurasi Tools tools yang akan digunakan, barulah kita akan mulai mengelola log dan metric dengan cara mengambilnya dari kedua instance, dengan cara:
+
+1.Edit konfigurasi filebeat di node1-gan dan node2-gan
+```
+$ nano /etc/filebeat/filebeat.yml
+
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/syslog
+    fields:
+    log_name: syslog
+
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/auth. log
+    fields:
+    log_name: auth_log
+
+output. logstash:
+hosts: ["10.13.13.10:5044"]
+```
+
+2.Edit konfigurasi metricbeat di node1-gan dan node2-gan
+```
+$ sudo nano /etc/metricbeat/metricbeat.yml
+
+# Global configurations for Metricbeat
+metricbeat.config.modules:
+  path: ${path.config}/modules.d/ *. yml
+  reload. enabled: false
+
+path.data: /var/lib/metricbeat
+
+
+output.elasticsearch:
+  # Set Elasticsearch host(s) here
+  hosts: ["http://10.13.13.10:9200"]
+  username: "elastic"
+  password: "elastic"
+
+# Configuring ILM for data stream management
+setup.ilm.enabled: true
+setup. ilm.rollover_alias: "metricbeat-(node1/node2)"
+setup.ilm.pattern: "{now/d}-000001"
+
+
+# Add custom fields to help identify data from this instance
+processors:
+  - add_fields:
+    target: '
+    fields:
+    instance_id: "(node1-gan/node2-gan)"
+
+
+# Set up Metricbeat dashboard in Kibana (recommended for visualization)
+setup.kibana:
+host: "http://10.13.13.10:5601"
+```
+
+3.Edit konfigurasi logstash di vm ganteng-controller.
+```
+$ sudo nano /etc/logstash/conf.d/filter-syslog.conf
+```
+```
+input {
+  beats {
+    port => 5044
+  }
+}
+
+filter {
+  if [type] == "syslog" {
+    grok {
+      match => { "message" => [
+        "%{SYSLOGBASE} %{GREEDYDATA:syslog_message}"
+      ] }
+      # Jika parsing gagal, masukkan log ke tag "_grokparsefailure"
+      tag_on_failure => ["_grokparsefailure"]
+    }
+
+    date {
+      match => ["syslog_timestamp", "MMM d HH:mm:ss", "MMM dd HH:mm:ss"]
+      timezone => "UTC"
+    }
+
+    # Field-field tambahan untuk Klarifikasi dan visualisasi
+    mutate {
+      rename => { "syslog_hostname" => "host.name" }
+      rename => { "syslog_program" => "process.name" }
+      rename => { "syslog_pid" => "process.pid" }
+      rename => { "syslog_message" => "message" }
+
+      remove_field => ["syslog_timestamp"]
+    }
+
+    # Tentukan ECS-compatible fields
+    mutate {
+      add_field => { "[host][ip]" => "%{[host][ip]}" }
+    }
+  }
+
+  # Auth log filter
+  if [fields][log_name] == "auth_log" {
+    grok {
+      match => { "message" => "Invalid user %{USERNAME:ssh.invalid_user} from %{IP:ssh.client_ip}" }
+      add_tag => ["ssh_fail", "auth_log"]
+    }
+
+    if [fields][log_name] == "auth_log" and "_grokparsefailure" in [tags] {
+      drop { }
+    }
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    manage_template => false
+    index => "%{[fields][log_name]}-%{[agent][name]}-%{+YYYY.MM}"
+    user => "elastic"
+    password => "elastic"
+  }
+}
+```
+
+4.Restart filebeat, metricbeat, logstash, dan elasticsearch
+```
+$ sudo systemctl restart filebeat
+$ sudo systemctl restart metricbeat
+$ sudo systemctl restart logstash
+$ sudo systemctl restart elasticsearch
+```
+
+5.Verifikasi bahwa semua service running tanpa masalah.
+```
+$ sudo systemctl status filebeat
+$ sudo systemctl status metricbeat
+$ sudo systemctl status logstash
+$ sudo systemctl status elasticsearch
+```
+
+6.Verifikasi index sudah terbuat.
+```
+$ curl -X GET -u elastic:elastic 10.13.13.10:9200/_cat/indices?v
+```
+
+---
+## Buat Data Views
+Setelah index terbuat, buat data view yang nantinya akan menjadi sumber / source data untuk kita memvisualisasikannya
+
+1.Login ke Kibana lalu buka **side bar > stack management > Data views**.
+
+2.Buat data view dengan cara klik **Create Data View** dan mulai pembuatan, data view yang dibutuhkan: 
+![Dataview1](/images/dataview.png)
+
+* Name : Syslog-node1   | Index pattern: syslog_node1* | Timestamp field: @timestamp
+* Name : Syslog-node2   | Index pattern: syslog_node2* | Timestamp field: @timestamp
+* Name : Auth-node1  | Index pattern: auth_log_node1* | Timestamp field: @timestamp
+* Name : Auth-node2  | Index pattern: auth_log_node2* | Timestamp field: @timestamp
+* Name : Syslog dan Auth-node1  | Index pattern: syslog_node1*, auth_log_node1* | Timestamp field: @timestamp
+* Name : Syslog dan Auth-node2  | Index pattern: syslog_node2*, auth_log_node2* | Timestamp field: @timestamp
+* Name : Metrics-node 1&2  | Index pattern: metricbeat* | Timestamp field: @timestamp
+
+2.Verifikasi Data views yang sudah terbuat.
+![Dataview2](/images/dataview-2.png)
+
+---
+## Buat Visualisasi Dashboard Node1
+Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan digunakan untuk Monitoring Instance node1-gan
+1.Buka **Sidebar > Dashboard > create dashboard**.
+![Visualisasi](/images/visualisasi1.png)
+
+2.Untuk membuat visualisasi, klik **Create visualization**.
+> **Note:** Disini saya membuat banyak Visualisasi, caranya mirip namun ketentuannya berbeda.
+
+3.Buat Visualisasi yang akan digunakan untuk monitoring Instance node1-gan, ketentuan Visualisasinya:
+- Visualisasi: Hostname  
+  - Data source	        	: Syslog-node1
+  - Fields		          	: host.name.keyword
+  - Visualization Type	  : Tag cloud
+
+- Visualisasi: Total RAM
+  - Data source           : Metrics node 1&2
+  - Fields                : system.memory.total
+  - Visualization Type    : Legacy Metrics
+  - Functions             : Median
+  - Filter by             : instance_id: "node1-gan"
+  - Name                  : Total RAM
+  - Value format          : Bytes (1024)
+
+- Visualisasi: RAM Used
+  - Data source           : Metrics node 1&2
+  - Metric Fields         : system.memory.actual.used
+  - Maximum Value fields  : system.memory.total
+  - Visualization Type    : Semi-circular Gauge
+  - Klik Save and return  : Yes
+  - Functions             : Last value
+  - Name                  : RAM Used
+  - Value format          : Bytes (1024)
+
+- Visualisasi: RAM Free
+  - Data source           : Metrics node 1&2
+  - Fields                : system.memory.actual.free
+  - Visualization Type    : Legacy Metrics
+  - Functions             : Last value
+  - Filter by             : instance_id: "node1-gan"
+  - Name                  : RAM Free
+  - Value format          : Bytes (1024)
+
+- Visualisasi: Total Disk
+  - Data source           : Metrics node 1&2
+  - Fields                : system.fsstat.total_size.total
+  - Visualization Type    : Legacy Metrics
+  - Functions             : Last value
+  - Filter by             : instance_id: "node1-gan"
+  - Name                  : Node 1 Disk Total
+  - Value format          : Bytes (1024)
+
+- Visualisasi: Disk Free
+  - Data source           : Metrics node 1&2
+  - Fields                : system.fsstat.total_size.free
+  - Visualization Type    : Legacy Metrics
+  - Functions             : Last value
+  - Filter by             : "system.fsstat.total_size.free": * and instance_id : "node1-gan"
+  - Name                  : Total Disk Free
+  - Value format          : Bytes (1024)
+
+- Visualisasi: Disk Used
+  - Data source           : Metrics node 1&2
+  - Metrics Fields        : system.fsstat.total_size.used
+  - Maximum Field         : system.fsstat.total_size.total
+  - Visualization Type    : Legacy Metrics
+  - Functions             : Last value
+  - Filter by             : "system.fsstat.total_size.used": * and instance_id : "node1-gan"
+  - Name                  : Total Disk Used
+  - Value format          : Bytes (1024)
+
+- Visualisasi: Event Syslog
+  - Data source           : Syslog-node1
+  - Fields                : event.original.keyword
+  - Visualization Type    : Table
+  - Name Rows             : Syslog Event
+
+- Visualisasi: Log Types
+  - Data source           : Syslog dan Auth-node1
+  - Fields                : log.file.path_keyword
+  - Visualization Type    : Table
+  - Name Rows             : Log Types in Node01
+
+- Visualisasi: SSH Invalid User
+  - Data source           : Auth-node1
+  - Fields                : ssh_invalid_user
+  - Visualization Type    : Table
+  - Rows 1                : @timestamp
+  - Rows 2                : Top values of ssh_invalid_user.keyword
+  - Number of values      : 10
+  - Metrics               : Count of ssh_invalid_user.keyword
+
+- Visualisasi: CPU Usage
+  - Data source           : Metrics node 1&2
+  - Metrics Fields        : system.fsstat.total_size.used
+  - Maximum Field         : system.fsstat.total_size.total
+  - Visualization Type    : Horizontal Bullet
+  - Functions             : Last value
+  - Filter by             : "system.cpu.total.pct": * and instance_id : "node1-gan"
+  - Name                  : CPU Usage
+  - Value format          : Percent
+
+4.Selesai membuat visualisasi tersebut, rapihkan dan **Save** Dashboard.
+![Dashboard](/images/Dashboard-1.png)
