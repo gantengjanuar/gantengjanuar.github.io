@@ -10,7 +10,7 @@ tags:
 
 ![Openstack-ElkStack](/images/Openstack-ELkStack.png)
 
-# Instance Log and Metric Collecting for Monitoring With ELK Stack
+---
 Hallo Semuanya!, Blog ini merupakan panduan lengkap mengenai cara mengumpulkan Log dan Metric dari sebuah Instance yang berada di Openstack Cluster. Disini, kita akan memanfaatkan Tools **ELK Stack** ( Filebeat, MetricBeat, Elasticsearch dan Kibana) untuk pengelolaan log dan metric yang cukup kompleks.
 
 Selain itu, disini juga akan dijelaskan dari awal dari mulai Deploy Openstack menggunakan Kolla-Ansible hingga Monitoring Instance menggunakan Dashboard yang datanya diambil dari Log dan juga Metric dua Instance. Dengan menggunakan Dashboard, memungkinkan kita untuk Monitoring Instance secara efektif.
