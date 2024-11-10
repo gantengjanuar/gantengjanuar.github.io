@@ -4,23 +4,31 @@ excerpt: "Creating Game Called Air Strike with Python<br/><img src='/images/Airs
 collection: portfolio
 ---
 
-Selamat datang di halaman proyek saya! Di sini Anda bisa melihat berbagai proyek yang telah saya kerjakan, beserta detailnya.
+Selamat datang di halaman project saya! Di sini Anda bisa melihat berbagai proyek yang telah saya kerjakan, beserta detailnya.
 
 ---
 
 ## Project 1: **Creating Game Called Air Strike with Python**
-**Deskripsi:**  
-Proyek ini adalah salah satu dari tugas akhir yang diberikan oleh guru saya, yaitu **Membuat game sederhana** , dadawd.
+**Deskripsi Project:**  
+Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, Casual and Fun" yang dibuat menggunakan bahasa pemrograman Python.
 
-Air Strike adalah game 2D kasual yang bertemakan pesawat tempur. Dalam game ini anda akan disuruh untuk mengalahkan semua musuh tanpa akhir dan mengejar skor sebanyak banyakanya dan menjadi yang terbaik, tak lupa juga di game ini anda harus berhati hati karena musuh di game ini cukup kuat dan terdapat fitur bahan bakar yang dimana jika habis maka anda akan kalah. 
+Pada project ini, saya dan teman saya berhasil mendapatkan nilai terbaik diantara teman teman satu kelas saya. Kontribusi saya pada project kali ini antara lain:
+- Menentukan konsep ‘simple casual and fun game’
+- Membuat Flowchart untuk mengatur alur permainan dari awal hingga akhir
+- Melakukan coding menggunakan bahasa pemrograman Python di VSCode dalam proses pembuatan game
+- Melakukan research dan membuat Asset game berupa gambar, audio, font, dll. yang akan dipakai dalam game
+- Membuat laporan perkembangan game sebagai penilaian akhir proyek menggunakan Ms. Word dan Ms.Power Point
+
+
+
+### Deskripsi Game
+
+Air Strike adalah game 2D kasual yang bertemakan pesawat tempur. Dalam game ini Anda akan disuruh untuk mengalahkan semua musuh tanpa akhir dan mengejar skor sebanyak banyakanya dan menjadi yang terbaik, tak lupa juga di game ini Anda harus berhati-hati karena musuh di game ini cukup kuat dan terdapat fitur bahan bakar yang dimana jika habis maka Anda akan kalah. 
 
 Jadilah yang terbaik dalam mengejar skor di game ini !
 
 **Teknologi yang digunakan:**  
-- HTML
-- CSS
-- JavaScript
-- Framework lainnya (sebutkan jika ada)
+- Python
 
 **Fitur Utama:**
 - Fitur 1
@@ -29,7 +37,7 @@ Jadilah yang terbaik dalam mengejar skor di game ini !
 
 **Tautan:**
 [Demo Proyek](https://link-ke-demo.com)  
-[Repo GitHub](https://github.com/username/repo)
+[Repo GitHub](https://github.com/gantengjanuar/Airstrike)
 
 ---
 
