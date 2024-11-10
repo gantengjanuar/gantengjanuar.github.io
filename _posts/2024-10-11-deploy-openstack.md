@@ -101,9 +101,6 @@ hostname-compute2
 localhost ansible_connection=local
 ```
 
-
-> **Note:** ganti **hostname** dengan hostname controller dan compute anda.
-
 6. Konfigurasi ansible.cfg.
 ```
 $ sudo mkdir -p /etc/ansible
