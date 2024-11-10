@@ -811,8 +811,10 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
 ---
 ## Buat Dashboard Node2
 1.Buat Dashboard dengan nama “Dashboard-node2” dan save.
+
 2.Buka Dashboard yang sudah dibuat sebelumnya.
-3.Klik **titik 3 pada visualisasi Hostname > more >**
+
+3.Klik **... pada visualisasi Hostname > more >**
 ![Dashboard](/images/dashboard2-1.png)
 
 4.Klik **Copy to Dashboard > Existing dashboard > Dashboard-Node2 >Copy and go to dashboard**.
@@ -821,13 +823,155 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
 ![Dashboard](/images/dashboard2-3.png)
 
 5.Kembali lagi ke dashboard sebelumnya, lalu lakukan hal yang sama ke semua visualisasi yang sudah dibuat sebelumnya.
+
 6.Pastikan seluruh visualisasi yang dibuat sudah dicopy ke Dashboard Node2
 
 7.Ganti Data view pada seluruh visualisasi agar menampilkan node2
-- Semua visualisasi yang menggunakan Data View / source Auth-node1 ubah menjadi > Auth-node2
-- Semua visualisasi yang menggunakan Data View / source Syslog-node1 ubah menjadi >Syslog-node2
-- Semua visualisasi yang menggunakan Data View / source Metrics-node 1 & 2 ubah **filter by** menjadi > Instance_id : node2-gan
+- Semua visualisasi yang menggunakan Data View / source **Auth-node1** ubah menjadi > **Auth-node2
+- Semua visualisasi yang menggunakan Data View / source **Syslog-node1** ubah menjadi > **Syslog-node2**
+- Semua visualisasi yang menggunakan Data View / source **Metrics-node** 1 & 2 ubah **filter by** menjadi > **Instance_id : node2-gan**
 
-8.Setelah semua selesai diubah, rapihkan Dashboard dan klik **Save**
+8.Setelah semua selesai diubah, rapihkan Dashboard dan klik **Save**.
 ![Dashboard Final](/images/dashboard2-final.png)
 
+---
+## Buat Alerting 
+Setelah membuat dua Dashboard untuk memonitoring kedua Instance, tentu saja ga lengkap kalo kita ga ngebuat Alerting yang dapat membantu untuk mendeteksi masalah lebih dini, gimana caranya? gini:
+
+1.Di node controller, buat encryption key yang berisi 32 karakter dan tambahkan kunci x-pack yang sudah dibuat ke konfigurasi kibana.
+```
+$ sudo nano /etc/kibana/kibana.yml
+```
+
+2.Buka Side bar > observabillity > alerts > manage rules > create rules.
+![Alert](/images/alert-1.png)
+
+3.Pilih Metrics Threshold
+![Alert](/images/alert-2.png)
+
+4.Buat Alert untuk kedua Instance, ketentuannya:
+- Name                : CPU USAGE node1-gan
+  - Tags              : node1-gan, cpu-usage
+  - Conditions        : When Average of system.cpu.total.pct is above 80% Alert, is above 70% Warning for the last 2 minutes
+  - Filter            : instance_id : "node1-gan"
+  - Check Every       : 1 minute
+  - Action            : Server Log
+  - Save Rules
+
+---
+- Name                : CPU USAGE node2-gan
+  - Tags              : node2-gan, cpu-usage
+  - Conditions        : When Average of system.cpu.total.pct is above 80% Alert, is above 70% Warning for the last 2 minutes
+  - Filter            : instance_id : "node2-gan"
+  - Check Every       : 1 minute
+  - Action            : Server Log
+  - Save Rules
+
+---
+- Name                : RAM USAGE node1-gan
+  - Tags              : node1-gan, ram-usage
+  - Conditions        : When Average of system.memory.actual.used.pct is above 70% Alert, is above 60% Warning for the last 2 minutes
+  - Filter            : instance_id : "node1-gan"
+  - Check Every       : 1 minute
+  - Action            : Server Log
+  - Save Rules
+
+---
+- Name                : RAM USAGE node2-gan
+  - Tags              : node2-gan, ram-usage
+  - Conditions        : When Average of system.memory.actual.used.pct is above 70% Alert, is above 60% Warning for the last 2 minutes
+  - Filter            : instance_id : "node2-gan"
+  - Check Every       : 1 minute
+  - Action            : Server Log (Tambahkan connector bila tidak ada)
+  - Save Rules
+
+---
+- Name                : DISK USAGE node1-gan
+  - Tags              : node1-gan, disk-usage
+  - Conditions        : When Average of system.filesystem.used.pct is above 85% Alert, is above 80% Warning for the last 2 minutes
+  - Filter            : instance_id : "node1-gan"
+  - Check Every       : 1 minute
+  - Action            : Server Log
+  - Save Rules
+
+---
+- Name                : DISK USAGE node2-gan
+  - Tags              : node2-gan, disk-usage
+  - Conditions        : When Average of system.filesystem.used.pct is above 85% Alert, is above 80% Warning for the last 2 minutes
+  - Filter            : instance_id : "node2-gan"
+  - Check Every       : 1 minute
+  - Action            : Server Log
+  - Save Rules
+
+---
+- Name                : INVALID SSH node1-gan
+  - Tags              : node1-gan, invalid-ssh
+  - Data view         : Auth-node1
+  - Aggregation       : ssh_invalid_user.keyword : *
+  - Threshold         : equation A, IS Above 25, for the last 30 days
+  - Action            : Server Log
+  - Save Rules
+
+---
+- Name                : INVALID SSH node2-gan
+  - Tags              : node2-gan, invalid-ssh
+  - Data view         : Auth-node2
+  - Aggregation       : ssh_invalid_user.keyword : *
+  - Threshold         : equation A, IS Above 25, for the last 30 days
+  - Action            : Server Log
+  - Save Rules
+
+5.Verifikasi bahwa semua alert sudah terbuat.
+![Alert](/images/alert-final.png)
+
+---
+# Verifikasi Hasil Pengerjaan
+Sekarang semua sudah terbuat, kita sudah berhasil melakukan:
+- **Openstack**
+  - Deploy Openstack menggunakan Kolla-Ansible
+  - Membuat serta launching dua Instance, yaitu **node1-gan** dan **node2-gan**
+
+---
+- **ELK Stack**
+  - Instalasi Logstash
+  - Instalasi Elasticsearch
+  - Instalasi Kibana
+  - Menerapkan Xpack 
+  - Instalasi Filebeat pada kedua Instance
+  - Instalasi Metricbeat pada kedua Instance
+  - Mengirim log **syslog** dan **Authlog** untuk diproses
+  - Membuat Data view dan memvisualisasikannya
+  - Membuat dua Dashboard untuk monitoring kedua Instance
+  - Membuat Alert untuk kedua Instance
+
+---
+# Hasil Akhir Project
+
+## Dashboard | node1-gan
+![hasil Akhir](/images/Dashboard-1.png)
+
+---
+## Dashboard | node2-gan
+![hasil Akhir](/images/Dashboard2-final.png)
+
+## Alerting | node1-gan & node2-gan
+![Alert](/images/alert-final.png)
+
+
+---
+## Referensi
+* [Openstack](https://docs.openstack.org/2024.2/)
+
+* [lasticsearch | Instalasi Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html)
+
+* [Medium | Install and Enables Modules Metricbeat](https://medium.com/@luisalbertotaveras9/how-to-install-metricbeat-and-enable-their-modules-4bf242b61ed5)
+
+* [Btech.id | Openstack](https://btech.id/en/news/layanan-layanan-yang-ada-di-openstack/)
+
+* [Btech.id | Elastic](https://btech.id/en/news/elastic-definisi-fungsi-dan-keuntungannya/)
+
+* [Youtube | How to Configure x-pack](https://youtu.be/E-kwK88Vxzk)
+
+* [revou | Apa itu Log?](https://revou.co/kosakata/log)
+
+* [pypi.org | Kolla-Ansible](https://pypi.org/project/kolla-ansible/)
