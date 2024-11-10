@@ -42,14 +42,15 @@ Jadilah yang terbaik dalam mengejar skor di game ini !
 * Plane, bullet, and explosion sound effect
 
 ## Screenshot Game
-[Screenshot Project](/images/ss-Airstrike.png)
+![ss game](/images/ss-Airstrike.png)
 
 ---
 
 **Tautan:**
-[PPT Laporan Akhir](https://www.canva.com/design/DAGWEY-K4b8/AehxTHNkPEt4riQX-nJMiA/edit?utm_content=DAGWEY-K4b8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)  
 
-[Repo GitHub](https://github.com/gantengjanuar/Airstrike)
+* [PPT Laporan Akhir](https://www.canva.com/design/DAGWEY-K4b8/AehxTHNkPEt4riQX-nJMiA/edit?utm_content=DAGWEY-K4b8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)  
+
+* [Repository GitHub](https://github.com/gantengjanuar/Airstrike)
 
 ---
 
