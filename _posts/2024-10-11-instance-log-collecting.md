@@ -507,7 +507,7 @@ $ sudo nano /etc/metricbeat/modules.d/system.yml
 - module: system
   period: 10s
   metricsets:
-    - cpu
+  - cpu
   - load
   - memory
   - network
@@ -676,7 +676,7 @@ $ curl -X GET -u elastic:elastic 10.13.13.10:9200/_cat/indices?v
 
 ---
 ## Buat Data Views
-Setelah index terbuat, buat data view yang nantinya akan menjadi sumber / source data untuk kita memvisualisasikannya
+Setelah index terbuat, buat data view yang nantinya akan menjadi sumber / source data untuk kita buat Visualisasi
 
 1.Login ke Kibana lalu buka **side bar > stack management > Data views**.
 
@@ -709,6 +709,7 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
   - Fields		          	: host.name.keyword
   - Visualization Type	  : Tag cloud
 
+---
 - Visualisasi: Total RAM
   - Data source           : Metrics node 1&2
   - Fields                : system.memory.total
@@ -718,16 +719,17 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
   - Name                  : Total RAM
   - Value format          : Bytes (1024)
 
+---
 - Visualisasi: RAM Used
   - Data source           : Metrics node 1&2
   - Metric Fields         : system.memory.actual.used
   - Maximum Value fields  : system.memory.total
   - Visualization Type    : Semi-circular Gauge
-  - Klik Save and return  : Yes
   - Functions             : Last value
   - Name                  : RAM Used
   - Value format          : Bytes (1024)
 
+---
 - Visualisasi: RAM Free
   - Data source           : Metrics node 1&2
   - Fields                : system.memory.actual.free
@@ -737,6 +739,7 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
   - Name                  : RAM Free
   - Value format          : Bytes (1024)
 
+---
 - Visualisasi: Total Disk
   - Data source           : Metrics node 1&2
   - Fields                : system.fsstat.total_size.total
@@ -746,6 +749,7 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
   - Name                  : Node 1 Disk Total
   - Value format          : Bytes (1024)
 
+---
 - Visualisasi: Disk Free
   - Data source           : Metrics node 1&2
   - Fields                : system.fsstat.total_size.free
@@ -755,6 +759,7 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
   - Name                  : Total Disk Free
   - Value format          : Bytes (1024)
 
+---
 - Visualisasi: Disk Used
   - Data source           : Metrics node 1&2
   - Metrics Fields        : system.fsstat.total_size.used
@@ -765,18 +770,21 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
   - Name                  : Total Disk Used
   - Value format          : Bytes (1024)
 
+---
 - Visualisasi: Event Syslog
   - Data source           : Syslog-node1
   - Fields                : event.original.keyword
   - Visualization Type    : Table
   - Name Rows             : Syslog Event
 
+---
 - Visualisasi: Log Types
   - Data source           : Syslog dan Auth-node1
   - Fields                : log.file.path_keyword
   - Visualization Type    : Table
   - Name Rows             : Log Types in Node01
 
+---
 - Visualisasi: SSH Invalid User
   - Data source           : Auth-node1
   - Fields                : ssh_invalid_user
@@ -786,6 +794,7 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
   - Number of values      : 10
   - Metrics               : Count of ssh_invalid_user.keyword
 
+---
 - Visualisasi: CPU Usage
   - Data source           : Metrics node 1&2
   - Metrics Fields        : system.fsstat.total_size.used
@@ -798,3 +807,27 @@ Sekarang kita akan membuat Visualisasi untuk Dashboard node 1 yang nantinya akan
 
 4.Selesai membuat visualisasi tersebut, rapihkan dan **Save** Dashboard.
 ![Dashboard](/images/Dashboard-1.png)
+
+---
+## Buat Dashboard Node2
+1.Buat Dashboard dengan nama “Dashboard-node2” dan save.
+2.Buka Dashboard yang sudah dibuat sebelumnya.
+3.Klik **titik 3 pada visualisasi Hostname > more >**
+![Dashboard](/images/dashboard2-1.png)
+
+4.Klik **Copy to Dashboard > Existing dashboard > Dashboard-Node2 >Copy and go to dashboard**.
+![Dashboard](/images/dashboard2-2.png)
+
+![Dashboard](/images/dashboard2-3.png)
+
+5.Kembali lagi ke dashboard sebelumnya, lalu lakukan hal yang sama ke semua visualisasi yang sudah dibuat sebelumnya.
+6.Pastikan seluruh visualisasi yang dibuat sudah dicopy ke Dashboard Node2
+
+7.Ganti Data view pada seluruh visualisasi agar menampilkan node2
+- Semua visualisasi yang menggunakan Data View / source Auth-node1 ubah menjadi > Auth-node2
+- Semua visualisasi yang menggunakan Data View / source Syslog-node1 ubah menjadi >Syslog-node2
+- Semua visualisasi yang menggunakan Data View / source Metrics-node 1 & 2 ubah **filter by** menjadi > Instance_id : node2-gan
+
+8.Setelah semua selesai diubah, rapihkan Dashboard dan klik **Save**
+![Dashboard Final](/images/dashboard2-final.png)
+
