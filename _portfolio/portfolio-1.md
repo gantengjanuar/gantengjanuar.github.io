@@ -7,9 +7,10 @@ collection: portfolio
 Project - 1    
 
 ---
-![Airstrike](/images/Airstrike-2.png)
+![Airstrike](/images/Airstrike-3.png)
 
 # Project 1: **Creating Game Called Air Strike with Python**
+
 **Deskripsi Project:**  
 Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, Casual and Fun" yang dibuat menggunakan bahasa pemrograman Python.
 
@@ -29,57 +30,20 @@ Air Strike adalah game 2D kasual yang bertemakan pesawat tempur. Dalam game ini 
 Jadilah yang terbaik dalam mengejar skor di game ini !
 
 **Teknologi yang digunakan:**  
-- Python
+* VsCode
+* Python Programming Language
 
-**Fitur Utama:**
-- Fitur 1
-- Fitur 2
-- Fitur 3
+**Fitur Utama Game:**
+* Home page and Game over page
+* Score
+* Generate random enemy
+* Generate random fuel and power-up
+* Backrground music
+* Plane, bullet, and explosion sound effect
 
 **Tautan:**
-[Demo Proyek](https://link-ke-demo.com)  
+[PPT Laporan Akhir](https://link-ke-demo.com)  
 [Repo GitHub](https://github.com/gantengjanuar/Airstrike)
 
 ---
 
-## Project 2: **Nama Proyek Lainnya**
-**Deskripsi:**  
-Deskripsi singkat yang menjelaskan proyek ini dan apa yang membuatnya unik.
-
-**Teknologi yang digunakan:**  
-- Python
-- Django
-- MySQL
-
-**Fitur Utama:**
-- Fitur A
-- Fitur B
-- Fitur C
-
-**Tautan:**
-[Demo Proyek](https://link-ke-demo-lainnya.com)  
-[Repo GitHub](https://github.com/username/repo-lainnya)
-
----
-
-## Project 3: **Proyek Tambahan**
-**Deskripsi:**  
-Penjelasan singkat tentang proyek ini.
-
-**Teknologi yang digunakan:**  
-- React
-- Node.js
-- Express
-
-**Fitur Utama:**
-- Fitur X
-- Fitur Y
-- Fitur Z
-
-**Tautan:**
-[Demo Proyek](https://link-ke-demo-tambahan.com)  
-[Repo GitHub](https://github.com/username/repo-tambahan)
-
----
-
-Silakan eksplorasi lebih lanjut setiap proyek, atau hubungi saya jika Anda tertarik mengetahui lebih detail tentang salah satu proyek di atas.
