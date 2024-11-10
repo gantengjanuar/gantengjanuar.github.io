@@ -9,10 +9,10 @@ Project - 1
 ---
 ![Airstrike](/images/Airstrike-3.png)
 
-# Project 1: **Creating Game Called Air Strike with Python**
+# Project 1: **Membuat Game Menggunakan Bahasa Pemograman Python**
 
 **Deskripsi Project:**  
-Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, Casual and Fun" yang dibuat menggunakan bahasa pemrograman Python.
+Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, casual, and fun" yang dibuat menggunakan bahasa pemrograman Python.
 
 Pada project ini, saya dan teman saya berhasil mendapatkan nilai terbaik diantara teman teman satu kelas saya. Kontribusi saya pada project kali ini antara lain:
 - Menentukan konsep ‘simple casual and fun game’
@@ -41,8 +41,14 @@ Jadilah yang terbaik dalam mengejar skor di game ini !
 * Backrground music
 * Plane, bullet, and explosion sound effect
 
+## Screenshot Game
+[Screenshot Project](/images/ss-Airstrike.png)
+
+---
+
 **Tautan:**
-[PPT Laporan Akhir](https://link-ke-demo.com)  
+[PPT Laporan Akhir](https://www.canva.com/design/DAGWEY-K4b8/AehxTHNkPEt4riQX-nJMiA/edit?utm_content=DAGWEY-K4b8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)  
+
 [Repo GitHub](https://github.com/gantengjanuar/Airstrike)
 
 ---

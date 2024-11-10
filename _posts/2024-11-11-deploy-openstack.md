@@ -47,7 +47,7 @@ Kolla-Ansible sangat memudahkan penyebaran OpenStack bagi perusahaan atau tim ya
 
 # Langkah pengerjaan / Implementasi
 
-1. Install sependensi yang dibutuhkan.
+1. Install dependensi yang dibutuhkan.
 ```
 $ sudo apt update
 $ sudo apt-get install python3-dev libffi-dev gcc libssl-dev python3-selinux python3-setuptools python3-venv -y
