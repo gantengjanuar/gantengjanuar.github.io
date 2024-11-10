@@ -33,10 +33,12 @@ Dengan menerapkan alat seperti ElasticSearch, perusahaan dapat mengkonsolidasika
 ## Topologi Saya
 ![Topologi](/images/Topologi-1.png)
 
+Dari Openstack Cluster, deploy 2 instance dan keduanya dipasangkan FIlebeat dan Metricbeat, log dan metric dari kedua instance dikirim ke logstash untuk parsing lalu ke elasticsearch untuk dikelola lebih lanjut. Pada elasticsearch, dipasangkan X-PACK untuk mengamankan koneksi serta menambah fitur alerting. Lalu log dan metrics akan di viualisasikan menggunakan Kibana serta dibuat Alerting agar monitoring lebih aman.
+
 ## Alur Kerja Saya
 ![Topologi](/images/Workflow-1.png)
 
-
+---
 # Teori
 Sebelum masuk jauh ke panduan, ada beberapa hal dulu yang sangat penting untuk kita pahami supaya pengerjaan nantinya menjadi lebih mudah, apa saja itu?
 
@@ -88,8 +90,8 @@ X-Pack adalah sekumpulan plugin yang dikembangkan oleh Elastic untuk menambahkan
 Kibana adalah alat visualisasi dan dashboard dalam ELK Stack yang digunakan untuk memvisualisasikan data yang disimpan di Elasticsearch. Kibana memungkinkan pengguna untuk membuat grafik, peta, dan visualisasi lain untuk memahami data log dan metric secara lebih mendalam.
 
 
+---
 # Langkah pengerjaan / Implementasi
-
 
 ## Deploy Openstack pada Controller
 
@@ -147,7 +149,6 @@ hostname-compute2
 localhost ansible_connection=local
 ```
 
-
 > **Note:** ganti **hostname** dengan hostname controller dan compute anda.
 
 6.Konfigurasi ansible.cfg.
@@ -195,6 +196,7 @@ $ kolla-ansible -i ./multinode deploy
 $ kolla-ansible -i ./multinode post-deploy
 ``` 
 > **Note:** Proses ini memakan waktu berapa menit jadi harap sabar.
+
 11.Lakukan Instalasi openstackclient dan verifikasi Openstack
 ```
 $ pip install openstackclient
@@ -205,6 +207,7 @@ $ openstack service list
 ```
 > **Note:** Pastikan Service inti yang diinginkan sudah active.
 
+---
 ## Install Elasticsearch pada Controller
 1.Update repo dan install dependensi yang dibutuhkan.
 ```
@@ -243,6 +246,7 @@ xpack. security. enabled: false
 $ sudo systemctl restart elasticsearch
 $ sudo systemctl status elasticsearch
 
+---
 ## Install Kibana pada Controller
 1.Install Kibana dan jalankan.
 ```
@@ -264,7 +268,7 @@ server.host: "0.0.0.0"
 $ sudo systemctl restart kibana
 ```
 
-
+---
 ## Install Logstash pada Controller
 1.Install logstash.
 ```
@@ -278,7 +282,7 @@ $ sudo systemctl start logstash
 $ sudo systemctl status logstash
 ```
 
-
+---
 ## Menerapkan keamanan X-Pack
 1.Stop Kibana dan Elasticsearch.
 ```
