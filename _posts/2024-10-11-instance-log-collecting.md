@@ -13,8 +13,11 @@ tags:
 # Instance Log and Metric Collecting for Monitoring With ELK Stack
 Hallo Semuanya!, Blog ini merupakan panduan lengkap mengenai cara mengumpulkan Log dan Metric dari sebuah Instance yang berada di Openstack Cluster. Disini, kita akan memanfaatkan Tools **ELK Stack** ( Filebeat, MetricBeat, Elasticsearch dan Kibana) untuk pengelolaan log dan metric yang cukup kompleks.
 
-Selain itu, disini juga akan dijelaskan dari awal dari mulai Deploy Openstack menggunakan Kolla-Ansible hingga Monitoring Instance menggunakan Dashboard yang datanya diambil dari Log dan juga Metric dua Instance. Dengan menggunakan Dashboard, memungkinkan kita untuk Monitoring Instance secara efektif 
+Selain itu, disini juga akan dijelaskan dari awal dari mulai Deploy Openstack menggunakan Kolla-Ansible hingga Monitoring Instance menggunakan Dashboard yang datanya diambil dari Log dan juga Metric dua Instance. Dengan menggunakan Dashboard, memungkinkan kita untuk Monitoring Instance secara efektif.
 
+Oh ya, disini saya menggunakan 3 Virtual Machine, 1 untuk controller atau pilotnya, sedangkan duanya untuk compute
+
+---
 ## Latar Belakang
 Dalam era digital saat ini, manajemen infrastruktur TI yang efisien menjadi sangat penting bagi keberlangsungan operasi perusahaan. OpenStack, sebagai platform cloud computing yang open-source, memungkinkan perusahaan untuk membangun dan mengelola infrastruktur cloud secara fleksibel dan scalable.
 
@@ -22,7 +25,7 @@ Namun, dengan kompleksitas yang dihadapi dalam pengoperasian cluster OpenStack, 
 
 Dengan menerapkan alat seperti ElasticSearch, perusahaan dapat mengkonsolidasikan log dari berbagai instance ke dalam satu platform. Ini memungkinkan tim operasional untuk memantau kondisi sistem secara real-time, menganalisis data log dengan lebih efisien, dan mengambil tindakan yang diperlukan berdasarkan informasi yang diperoleh. Selain itu, penggunaan metrik dan alerting akan meningkatkan kemampuan pemantauan, memungkinkan deteksi masalah lebih awal dan pengambilan keputusan yang lebih cepat.
 
-## Tools yang Digunakan*
+## Tools yang Digunakan
 * OpenStack	 	      - v7.2.1
 * kolla-ansible 		- v2023.1
 * Elasticsearch 		- v 8.15.3
@@ -91,7 +94,8 @@ Kibana adalah alat visualisasi dan dashboard dalam ELK Stack yang digunakan untu
 
 
 ---
-# Langkah pengerjaan / Implementasi
+# Langkah Persiapam | Instalasi
+Sebelum masuk ke pengerjaan, lakukan installasi / deployment terkait tools yang nantinya kita akan gunakan.
 
 ## Deploy Openstack pada Controller
 
@@ -128,28 +132,27 @@ $ vim ~/multinode
 ``` 
 ```
 [control]
-hostname-controller
+ganteng-controller
 
 [network]
-hostname-controller
+ganteng-controller
 
 [compute]
-hostname-compute1
-hostname-compute2
+ganteng-compute1
+ganteng-compute2
 
 [monitoring]
-hostname-controller
+ganteng-controller
 
 [storage]
-hostname-controller
-hostname-compute1
-hostname-compute2
+ganteng-controller
+ganteng-compute1
+ganteng-compute2
 
 [deployment]
 localhost ansible_connection=local
 ```
 
-> **Note:** ganti **hostname** dengan hostname controller dan compute anda.
 
 6.Konfigurasi ansible.cfg.
 ```
@@ -328,3 +331,135 @@ elasticsearch.password: "kibana"
 7.Jalankan kembali Elasticsearch dan Kibana lalu Akses kibana dan Login dengan user elastic.
 Akses browser: http://10.13.13.10:5601/
 
+
+---
+# Langkah Pengerjaan | Implementasi
+Selesai melakukan tahap persiapan yaitu instalasi, barulah disini kita akan mulai launching 2 instance yang nantinya akan dikelola data log dan metrics nya untuk dibuat Dashboard untuk mengimplementasikan **Monitoring**.
+
+
+## Launching Instance 1 dan 2
+1.Aktifkan admin kredensial dan aktifkan virtual env.
+```
+$ source /etc/kolla/admin-openrc.sh
+$ source ~/kolla-venv/bin/activate
+```
+
+2.Buat image Ubuntu 20.04 LTS lalu verifikasi
+```
+$ wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+
+$ openstack image create -- disk-format qcow2 \
+  -- container-format bare -- public \
+  -- file ./focal-server-cloudimg-amd64.img focal-image-ubuntu
+
+$ openstack image list
+```
+
+3.Buat external network serta subnetnya dan verifikasi.
+```
+$ openstack network create --share --external \
+  -- provider-physical-network physnet1 \
+  -- provider-network-type flat external-net-ganteng
+
+$ openstack network list
+```
+```
+$ openstack subnet create -- network external-net-ganteng \
+  -- gateway 20.13.13.1 -- no-dhcp \
+  -- subnet-range 20.13.13.0/24 external-subnet-ganteng
+
+$ openstack subnet list
+```
+
+4.Buat Internal network serta subnetnya dan verifikasi.
+```
+$ openstack network create internal-net-ganteng
+
+$ openstack subnet create -- network internal-net-ganteng \
+  -- allocation-pool start=10.100.13.10, end=10.100.13.254 \
+  -- dns-nameserver 8.8.8.8 -- gateway 10.100.13.1 \
+  -- subnet-range 10.100.13.0/24 internal-subnet-ganteng
+
+$ openstack network list
+$ openstack subnet list
+```
+
+5.Buat router dan verifikasi.
+```
+$ openstack router create router-ganteng
+$ openstack router set -- external-gateway external-net-ganteng router-ganteng
+$ openstack router add subnet router-ganteng internal-subnet-ganteng
+
+$ openstack router list
+```
+
+6.Buat security group yang mengizinkan protokol  ICMP dan TCP ssh dan verifikasi.
+```
+$ openstack security group create gan-security-group
+$ openstack security group rule create -- protocol icmp gan-security-group
+$ openstack security group rule create -- protocol tcp -- ingress -- dst-port 22 gan-security-group
+
+$ openstack security group list
+$ openstack security group rule list gan-security-group
+```
+
+7.Buat keypair dan verifikasi
+```
+$ openstack keypair create -- public-key ~/.ssh/id_rsa.pub ubuntu-key
+
+$ openstack keypair list
+```
+
+8.Buat flavor dan verifikasi.
+```
+$ openstack flavor create -- ram 2048 -- disk 8 -- vcpus 1 -- public mid-spec
+$ openstack flavor create -- ram 3072 -- disk 8 -- vcpus 1 -- public mid-spec-2
+
+$ openstack flavor list
+```
+
+9.Launching instance node1-gan
+```
+$ openstack server create -- flavor mid-spec \
+    -- image focal-image-ubuntu \
+    -- key-name ubuntu-key \
+    -- security-group gan-security-group \
+    -- network internal-net-ganteng \
+    node1-gan
+```
+
+10.Pasang floating ip ke instance node1-gan dan verifikasi.
+```
+$ openstack floating ip create -- floating-ip-address 20.13.13.34 external-net-ganteng
+$ openstack server add floating ip nodel-gan 20.13.13.34
+
+$ openstack server list
+```
+
+11.Coba akses instance node1-gan.
+```
+$ ssh -o 'PubkeyAcceptedKeyTypes +ssh-rsa' ubuntu@20.13.13.34
+```
+
+12. Launching instance node2-gan
+```
+$ openstack server create -- flavor mid-spec-2 \
+    -- image focal-image-ubuntu \
+    -- key-name ubuntu-key \
+    -- security-group gan-security-group \
+    -- network internal-net-ganteng \
+    node2-gan
+```
+
+13.Pasang floating ip ke instance node2-gan dan verifikasi.
+```
+$ openstack floating ip create -- floating-ip-address 20.13.13.119 external-net-ganteng
+$ openstack server add floating ip node2-gan 20.13.13.119
+
+$ openstack server list
+```
+
+14.Coba akses instance node2-gan.
+```
+$ ssh -o 'PubkeyAcceptedKeyTypes +ssh-rsa' ubuntu@20.13.13.119
+```
