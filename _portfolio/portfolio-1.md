@@ -4,11 +4,12 @@ excerpt: "Creating Game Called Air Strike with Python<br/><img src='/images/Airs
 collection: portfolio
 ---
 
-Selamat datang di halaman project saya! Di sini Anda bisa melihat berbagai proyek yang telah saya kerjakan, beserta detailnya.
+Project - 1    
 
 ---
+![Airstrike](/images/Airstrike-2.png)
 
-## Project 1: **Creating Game Called Air Strike with Python**
+# Project 1: **Creating Game Called Air Strike with Python**
 **Deskripsi Project:**  
 Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, Casual and Fun" yang dibuat menggunakan bahasa pemrograman Python.
 
