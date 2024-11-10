@@ -842,8 +842,11 @@ Setelah membuat dua Dashboard untuk memonitoring kedua Instance, tentu saja ga l
 ```
 $ sudo nano /etc/kibana/kibana.yml
 ```
+```
+xpack. encryptedSavedObjects.encryptionkey: "2qlWjw69B8xKr8Gof4KNmN8JSGWqWEIF"
+```
 
-2.Buka Side bar > observabillity > alerts > manage rules > create rules.
+2.Buka **Side bar > observabillity > alerts > manage rules > create rules**.
 ![Alert](/images/alert-1.png)
 
 3.Pilih Metrics Threshold
@@ -856,7 +859,7 @@ $ sudo nano /etc/kibana/kibana.yml
   - Filter            : instance_id : "node1-gan"
   - Check Every       : 1 minute
   - Action            : Server Log
-  - Save Rules
+  - **Save Rules**
 
 ---
 - Name                : CPU USAGE node2-gan
@@ -865,7 +868,7 @@ $ sudo nano /etc/kibana/kibana.yml
   - Filter            : instance_id : "node2-gan"
   - Check Every       : 1 minute
   - Action            : Server Log
-  - Save Rules
+  - **Save Rules**
 
 ---
 - Name                : RAM USAGE node1-gan
@@ -874,7 +877,7 @@ $ sudo nano /etc/kibana/kibana.yml
   - Filter            : instance_id : "node1-gan"
   - Check Every       : 1 minute
   - Action            : Server Log
-  - Save Rules
+  - **Save Rules**
 
 ---
 - Name                : RAM USAGE node2-gan
@@ -883,7 +886,7 @@ $ sudo nano /etc/kibana/kibana.yml
   - Filter            : instance_id : "node2-gan"
   - Check Every       : 1 minute
   - Action            : Server Log (Tambahkan connector bila tidak ada)
-  - Save Rules
+  - **Save Rules**
 
 ---
 - Name                : DISK USAGE node1-gan
@@ -892,7 +895,7 @@ $ sudo nano /etc/kibana/kibana.yml
   - Filter            : instance_id : "node1-gan"
   - Check Every       : 1 minute
   - Action            : Server Log
-  - Save Rules
+  - **Save Rules**
 
 ---
 - Name                : DISK USAGE node2-gan
@@ -901,7 +904,7 @@ $ sudo nano /etc/kibana/kibana.yml
   - Filter            : instance_id : "node2-gan"
   - Check Every       : 1 minute
   - Action            : Server Log
-  - Save Rules
+  - **Save Rules**
 
 ---
 - Name                : INVALID SSH node1-gan
@@ -910,7 +913,7 @@ $ sudo nano /etc/kibana/kibana.yml
   - Aggregation       : ssh_invalid_user.keyword : *
   - Threshold         : equation A, IS Above 25, for the last 30 days
   - Action            : Server Log
-  - Save Rules
+  - **Save Rules**
 
 ---
 - Name                : INVALID SSH node2-gan
@@ -919,7 +922,7 @@ $ sudo nano /etc/kibana/kibana.yml
   - Aggregation       : ssh_invalid_user.keyword : *
   - Threshold         : equation A, IS Above 25, for the last 30 days
   - Action            : Server Log
-  - Save Rules
+  - **Save Rules**
 
 5.Verifikasi bahwa semua alert sudah terbuat.
 ![Alert](/images/alert-final.png)
@@ -952,7 +955,7 @@ Sekarang semua sudah terbuat, kita sudah berhasil melakukan:
 
 ---
 ## Dashboard | node2-gan
-![hasil Akhir](/images/Dashboard2-final.png)
+![hasil Akhir](/images/dashboard2-final.png)
 
 ## Alerting | node1-gan & node2-gan
 ![Alert](/images/alert-final.png)
@@ -962,16 +965,16 @@ Sekarang semua sudah terbuat, kita sudah berhasil melakukan:
 ## Referensi
 * [Openstack](https://docs.openstack.org/2024.2/)
 
-* [lasticsearch | Instalasi Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html)
+* [Elasticsearch, Instalasi Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html)
 
-* [Medium | Install and Enables Modules Metricbeat](https://medium.com/@luisalbertotaveras9/how-to-install-metricbeat-and-enable-their-modules-4bf242b61ed5)
+* [Medium, Install and Enables Modules Metricbeat](https://medium.com/@luisalbertotaveras9/how-to-install-metricbeat-and-enable-their-modules-4bf242b61ed5)
 
-* [Btech.id | Openstack](https://btech.id/en/news/layanan-layanan-yang-ada-di-openstack/)
+* [Btech.id, Openstack](https://btech.id/en/news/layanan-layanan-yang-ada-di-openstack/)
 
-* [Btech.id | Elastic](https://btech.id/en/news/elastic-definisi-fungsi-dan-keuntungannya/)
+* [Btech.id,  Elastic](https://btech.id/en/news/elastic-definisi-fungsi-dan-keuntungannya/)
 
-* [Youtube | How to Configure x-pack](https://youtu.be/E-kwK88Vxzk)
+* [Youtube, How to Configure x-pack](https://youtu.be/E-kwK88Vxzk)
 
-* [revou | Apa itu Log?](https://revou.co/kosakata/log)
+* [revou, Apa itu Log?](https://revou.co/kosakata/log)
 
-* [pypi.org | Kolla-Ansible](https://pypi.org/project/kolla-ansible/)
+* [pypi.org, Kolla-Ansible](https://pypi.org/project/kolla-ansible/)
