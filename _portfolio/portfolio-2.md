@@ -9,7 +9,7 @@ Project - 2
 ---
 ![welcome](/images/welcome-ig.png)
 
-# Project 2: **Membuat Bisnis Online**
+# Project 2: **Membuat Bisnis Online "GannJoki.co"**
 
 **Deskripsi Project:**  
 Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru produktif mata pelajaran Wirausaha. Tugas yang diberikan adalah **Membuat Bisnis Online**. Saya membuka Bisnis menyediakan Jasa joki Game online, yaitu Mobile Legends.

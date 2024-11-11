@@ -1,6 +1,6 @@
 ---
 title: "Project: Creating simple Game With Python"
-excerpt: "Creating Game Called Air Strike with Python<br/><img src='/images/Airstrike-logo.png'>"
+excerpt: " <br/><img src='/images/Airstrike-logo.png'>"
 collection: portfolio
 ---
 
@@ -12,7 +12,7 @@ Project - 1
 # Project 1: **Membuat Game Menggunakan Bahasa Pemograman Python**
 
 **Deskripsi Project:**  
-Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, casual, and fun" yang dibuat menggunakan bahasa pemrograman Python.
+Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru produktif saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, casual, and fun" yang dibuat menggunakan bahasa pemrograman Python.
 
 Pada project ini, saya dan teman saya berhasil mendapatkan nilai terbaik diantara teman teman satu kelas saya. Kontribusi saya pada project kali ini antara lain:
 - Menentukan konsep ‘simple casual and fun game’
