@@ -17,9 +17,9 @@ Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh g
 Pada project ini, saya dan teman saya berhasil mendapatkan nilai terbaik diantara teman teman satu kelas saya. Kontribusi saya pada project kali ini antara lain:
 - Menentukan konsep ‘simple casual and fun game’
 - Membuat Flowchart untuk mengatur alur permainan dari awal hingga akhir
-- Melakukan coding menggunakan bahasa pemrograman Python di VSCode dalam proses pembuatan game
+- Membantu proses coding menggunakan bahasa pemrograman Python di VSCode dalam proses pembuatan game
 - Melakukan research dan membuat Asset game berupa gambar, audio, font, dll. yang akan dipakai dalam game
-- Membuat laporan perkembangan game sebagai penilaian akhir proyek menggunakan Ms. Word dan Ms.Power Point
+- Membuat laporan perkembangan game sebagai penilaian akhir proyek menggunakan Ms. Word dan Canva
 
 
 
