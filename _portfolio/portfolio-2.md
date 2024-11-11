@@ -7,7 +7,7 @@ collection: portfolio
 Project - 2
 
 ---
-![Airstrike](/images/welcome-ig.png)
+![welcome](/images/welcome-ig.png)
 
 # Project 2: **Membuat Bisnis Online**
 
@@ -15,44 +15,30 @@ Project - 2
 Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru produktif mata pelajaran Wirausaha. Tugas yang diberikan adalah **Membuat Bisnis Online**. Saya membuka Bisnis menyediakan Jasa joki Game online, yaitu Mobile Legends.
 
 Pada project ini, Tenggat waktu yang diberikan untuk memenuhi persyaratan nilai adalah selama setahun. Selama setahun saya melakukan banyak hal untuk mengeksekusi atau mengerjakan tugas ini dengan sebaik baiknya hingga akhirnya mendapat nilai **Tertinggi** di kelas saya. Hal yang saya lakukan antara lain: 
-- Membuat Website joki Mobile Legends menggunakan WordPress
-- Membuat serta mengelola akun *social media* Instagram dan Telegram sebagai media promosi
-- Membuat *design pricelist dan poster* untuk akun sosial media saya
+- Membuat Website joki Mobile Legends sederhana menggunakan Wordpress
+- Membuat serta mengelola akun social media Instagram dan Telegram sebagai media promosi
+- Membuat design pricelist dan poster untuk akun sosial media saya
 - Mengelola dan mengkonfirmasi proses order serta transaksi customer via Whatsapp dan Telegram
+- Melakukan Joki secara langsung untuk memenuhi permintaan dari customer
 
 
 
+---
+**Pencapaian Project:**
+Dalam kurun waktu setahun, saya melebihi target penilaian yang diberikan oleh guru saya dengan lebih dari 800 transaksi yang membuat saya mendapatkan nilai tertinggi dikelas. 
 
-
-
-### Deskripsi Game
-
-Air Strike adalah game 2D kasual yang bertemakan pesawat tempur. Dalam game ini Anda akan disuruh untuk mengalahkan semua musuh tanpa akhir dan mengejar skor sebanyak banyakanya dan menjadi yang terbaik, tak lupa juga di game ini Anda harus berhati-hati karena musuh di game ini cukup kuat dan terdapat fitur bahan bakar yang dimana jika habis maka Anda akan kalah. 
-
-Jadilah yang terbaik dalam mengejar skor di game ini !
-
-**Teknologi yang digunakan:**  
-* VsCode
-* Python Programming Language
-
-**Fitur Utama Game:**
-* Home page and Game over page
-* Score
-* Generate random enemy
-* Generate random fuel and power-up
-* Backrground music
-* Plane, bullet, and explosion sound effect
-
-## Screenshot Game
-![ss game](/images/ss-Airstrike.png)
-
+![Pencapaian](/images/Transaksi.png)
 ---
 
 **Tautan:**
 
-* [PPT Laporan Akhir](https://www.canva.com/design/DAGWEY-K4b8/AehxTHNkPEt4riQX-nJMiA/edit?utm_content=DAGWEY-K4b8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)  
+* [PPT Laporan Akhir](https://www.canva.com/design/DAGWMte7pvw/v03qywYIQQImg1g59ZT3WQ/edit?utm_content=DAGWMte7pvw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)  
 
-* [Repository GitHub](https://github.com/gantengjanuar/Airstrike)
+* [Website](https://gannjoki.wordpress.com/)
+
+* [Instagram](https://www.instagram.com/gannjoki.co/)
+
+* [Telegram](https://t.me/JokiMlbbbyGann )
 
 ---
 
