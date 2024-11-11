@@ -47,25 +47,25 @@ Kolla-Ansible sangat memudahkan penyebaran OpenStack bagi perusahaan atau tim ya
 
 # Langkah pengerjaan / Implementasi
 
-1. Install dependensi yang dibutuhkan.
+1.Install dependensi yang dibutuhkan.
 ```
 $ sudo apt update
 $ sudo apt-get install python3-dev libffi-dev gcc libssl-dev python3-selinux python3-setuptools python3-venv -y
 ```
-2. Buat virtual envrionment dan aktifkan.
+2.Buat virtual envrionment dan aktifkan.
 ``` 
 $ python3 -m venv kolla-venv
 $ source kolla-venv/bin/activate
 ```
 
-3. Install Ansible dan  Kolla-Ansible.
+3.Install Ansible dan  Kolla-Ansible.
 ```
 $ pip install -U pip
 $ pip install 'ansible>=6,<8'
 $ pip install git+https://opendev.org/openstack/kolla-ansible@stable/2023.1
 $ kolla-ansible install-deps
 ```
-4. Buat direktori /etc/kolla dan copy konfigurasi yang dibutuhkan.
+4.Buat direktori /etc/kolla dan copy konfigurasi yang dibutuhkan.
 
 ```
 $ sudo mkdir -p /etc/kolla
@@ -74,7 +74,7 @@ $ cp -r kolla-venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
 ```
 
 ---
-5. Edit inventory Multinode seperti dibawah:
+5.Edit inventory Multinode seperti dibawah:
 ```
 $ cp kolla-venv/share/kolla-ansible/ansible/inventory/* .
 $ vim ~/multinode
@@ -101,11 +101,11 @@ hostname-compute2
 [deployment]
 localhost ansible_connection=local
 ```
-
 ---
+
 > **Note:** ganti **hostname** dengan hostname controller dan compute anda.
 
-6. Konfigurasi ansible.cfg.
+6.Konfigurasi ansible.cfg.
 ```
 $ sudo mkdir -p /etc/ansible
 $ sudo vim /etc/ansible/ansible.cfg
@@ -116,16 +116,16 @@ host_key_checking=False
 pipelining=True
 forks=100
 ```
-7. Uji konektivitas Ansible
+7.Uji konektivitas Ansible
 ```
 $ ansible -i multinode all -m ping
 ```
-8. Generate kolla passwd
+8.Generate kolla passwd
 ```
 $ kolla-genpwd
 $ cat /etc/kolla/passwords.yml
 ```
-9. konfigurasi globals.yml.
+9.konfigurasi globals.yml.
 ```
 $ sudo vim /etc/kolla/globals.yml
 
@@ -143,14 +143,14 @@ enable_cinder_backend_lvm: "yes"
 ```
 > **Note:** ganti "**yes**" dengan "**no**" jika ingin menonaktifkan service nya.
 
-10. Lakukan Booststrap , pre deploy , Deployment dan Post deploy.
+10.Lakukan Booststrap , pre deploy , Deployment dan Post deploy.
 ```
 $ kolla-ansible -i ./multinode prechecks
 $ kolla-ansible -i ./multinode deploy
 $ kolla-ansible -i ./multinode post-deploy
 ``` 
 > **Note:** Proses ini memakan waktu berapa menit jadi harap sabar.
-11. Lakukan Instalasi openstackclient dan verifikasi Openstack
+11.Lakukan Instalasi openstackclient dan verifikasi Openstack
 ```
 $ pip install openstackclient
 $ source /etc/kolla/admin-openrc.sh

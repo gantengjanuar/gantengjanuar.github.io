@@ -1,6 +1,6 @@
 ---
 title: "Designs"
-excerpt: "Membuat Design Poster Menggunakan Canva dan Pixellab <br/><img src='/images/Profil.jpg'>"
+excerpt: "Membuat Design Poster Menggunakan Canva dan Pixellab <br/><img src='/images/Profile.jpg'>"
 collection: portfolio
 ---
 
