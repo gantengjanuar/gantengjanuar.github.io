@@ -73,6 +73,7 @@ $ sudo chown $USER:$USER /etc/kolla
 $ cp -r kolla-venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
 ```
 
+---
 5. Edit inventory Multinode seperti dibawah:
 ```
 $ cp kolla-venv/share/kolla-ansible/ansible/inventory/* .
@@ -101,7 +102,7 @@ hostname-compute2
 localhost ansible_connection=local
 ```
 
-
+---
 > **Note:** ganti **hostname** dengan hostname controller dan compute anda.
 
 6. Konfigurasi ansible.cfg.
