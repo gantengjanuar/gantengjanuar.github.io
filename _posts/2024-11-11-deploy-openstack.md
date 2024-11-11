@@ -150,6 +150,8 @@ $ kolla-ansible -i ./multinode deploy
 $ kolla-ansible -i ./multinode post-deploy
 ``` 
 > **Note:** Proses ini memakan waktu berapa menit jadi harap sabar.
+---
+
 11.Lakukan Instalasi openstackclient dan verifikasi Openstack
 ```
 $ pip install openstackclient
