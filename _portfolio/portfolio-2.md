@@ -29,8 +29,8 @@ Air Strike adalah game 2D kasual yang bertemakan pesawat tempur. Dalam game ini 
 Jadilah yang terbaik dalam mengejar skor di game ini !
 
 **Teknologi yang digunakan:**  
-* VsCode
-* Python Programming Language
+* Visual Studio Code (VS Code) – sebagai editor kode
+* Python – sebagai bahasa pemrograman
 
 **Fitur Utama Game:**
 * Home page and Game over page
