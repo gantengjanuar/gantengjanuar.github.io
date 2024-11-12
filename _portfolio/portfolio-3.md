@@ -1,6 +1,6 @@
 ---
 title: "Project: Designs"
-excerpt: " <br/><img src='/images/Design-3.png'>"
+excerpt: " <br/><img src='/images/design-lagi.png'>"
 collection: portfolio
 ---
 
