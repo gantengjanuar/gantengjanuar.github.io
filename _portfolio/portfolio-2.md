@@ -4,8 +4,6 @@ excerpt: " <br/><img src='/images/instagram-telegram.png'>"
 collection: portfolio
 ---
 
-Project - 2
-
 ---
 ![welcome](/images/welcome-ig.png)
 
