@@ -1,6 +1,6 @@
 ---
 title: "Project: Creating simple Game With Python"
-excerpt: " <br/><img src='/images/Airstrike-logo.png'>"
+excerpt: " <br/><img src='/images/AIR.png' width=300' >"
 collection: portfolio
 ---
    
