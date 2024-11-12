@@ -1,9 +1,11 @@
 ---
 title: "Project: Designs"
-excerpt: " <br/><img src='/images/project-design.png'>"
+excerpt: " <br/><img src='/images/design2.png'>"
 collection: portfolio
 ---
 
+
+---
 ![welcome](/images/banner-design.png)
 
 # Project 3: **Design Poster, Banner, Feed IG**
@@ -21,6 +23,7 @@ Project ini merupakan hasil karya individual saya dalam mendesain konten promosi
 ---
 **Banner Designs**
 ![banner](/images/banner.png)
+
 
 ---
 **Poster Feed Designs**

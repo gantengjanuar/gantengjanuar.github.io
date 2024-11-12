@@ -3,8 +3,7 @@ title: "Project: Creating simple Game With Python"
 excerpt: " <br/><img src='/images/Airstrike-logo.png'>"
 collection: portfolio
 ---
-
-Project - 1    
+   
 
 ---
 ![Airstrike](/images/Airstrike-3.png)
