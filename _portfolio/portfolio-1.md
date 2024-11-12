@@ -1,6 +1,6 @@
 ---
 title: "Project: Collecting Log Instance Openstack With ELK Stack"
-excerpt: " <br/><img src='/images/Openstack-ELkStack.png>"
+excerpt: " <br/><img src='/images/Openstack-ELkStack.png'>"
 collection: portfolio
 ---
 ![Openstack-ElkStack](/images/Openstack-ELkStack.png)
