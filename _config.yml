@@ -24,7 +24,7 @@ author:
   avatar           : "Profil.jpg"
   name             : "Ganteng Januar"
   pronouns         : # example: "she/her"  
-  bio              : "Cloud & DevOps Enthusiast."
+  bio              : "Cloud & DevOps Enthusiast"
   location         : "Depok, Jawa Barat"
   employer         : "SMK Negeri 3 Depok"
   uri              : # URL
@@ -99,7 +99,7 @@ comments:
   facebook:
     appid                :
     num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
+    colorscheme          : "dark"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "gh-pages" # "master", "gh-pages"
