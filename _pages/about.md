@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 
-
+![hi](/images/hi-2.png){: .align-right width="300px"}
 🎓 I am a 12th grade student at SMKN 3 Depok.
 
 👨🏻‍💻 My interest in IT is quite high, especially in the field of Cloud engineer and DevOps engineer.
