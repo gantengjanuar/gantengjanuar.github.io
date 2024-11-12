@@ -8,7 +8,7 @@ collection: portfolio
 ---
 ![Airstrike](/images/Airstrike-3.png)
 
-# Project 1: **Membuat Game Menggunakan Bahasa Pemograman Python**
+# Project: **Membuat Game Menggunakan Bahasa Pemograman Python**
 
 **Deskripsi Project:**  
 Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru produktif saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, casual, and fun" yang dibuat menggunakan bahasa pemrograman Python.
