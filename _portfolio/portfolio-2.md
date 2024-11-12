@@ -14,9 +14,9 @@ Project - 2
 **Deskripsi Project:**  
 Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru produktif mata pelajaran Wirausaha. Tugas yang diberikan adalah **Membuat Bisnis Online**. Saya membuka Bisnis menyediakan Jasa joki Game online, yaitu Mobile Legends.
 
-Pada project ini, Tenggat waktu yang diberikan untuk memenuhi persyaratan nilai adalah selama setahun. Selama setahun saya melakukan banyak hal untuk mengeksekusi atau mengerjakan tugas ini dengan sebaik baiknya hingga akhirnya mendapat nilai **Tertinggi** di kelas saya. Hal yang saya lakukan antara lain: 
+Pada project ini, tenggat waktu yang diberikan untuk memenuhi persyaratan nilai adalah selama setahun. Selama setahun saya melakukan banyak hal untuk mengeksekusi atau mengerjakan tugas ini dengan sebaik baiknya hingga akhirnya mendapat nilai **Tertinggi** di kelas saya. Hal yang saya lakukan antara lain: 
 - Membuat Website joki Mobile Legends sederhana menggunakan Wordpress
-- Membuat serta mengelola akun social media Instagram dan Telegram sebagai media promosi
+- Membuat serta mengelola akun social media berupa Instagram dan Telegram sebagai media promosi
 - Membuat design pricelist dan poster untuk akun sosial media saya
 - Mengelola dan mengkonfirmasi proses order serta transaksi customer via Whatsapp dan Telegram
 - Melakukan Joki secara langsung untuk memenuhi permintaan dari customer
