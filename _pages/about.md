@@ -19,5 +19,7 @@ redirect_from:
 
 📚 I always enjoy learning new things, especially those related to technological developments. My hope is to continue developing my skills in this field and one day contribute to the IT industry professionally.
 
+---
+![gann](/images/gan.gif)
 
 
