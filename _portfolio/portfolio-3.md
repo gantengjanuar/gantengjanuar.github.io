@@ -1,6 +1,6 @@
 ---
 title: "Project: Creating an online business"
-excerpt: " <br/><img src='/images/Joki-ss.png'>"
+excerpt: " <br/><img src='/images/Joki-ss.png' width='300'>"
 collection: portfolio
 ---
 
