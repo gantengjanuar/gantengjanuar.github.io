@@ -12,6 +12,7 @@ tags:
 
 ---
 Hallo Semuanya! Blog ini merupakan dokumentasi sekaligus panduan  mengenai cara menjaga Instance Webserver dan Instance Databases mengggunakan Security Group. Security group disini bertindak sebagai firewall yang menjaga dan membatasi port yang terbuka, sehingga keamanan dari kedua Instance meningkat.
+
 ---
 ## Latar Belakang
 Dalam era digital yang semakin maju, layanan cloud computing telah menjadi solusi utama bagi perusahaan untuk mengelola dan menyimpan data serta aplikasi secara efisien. Namun, dengan meningkatnya penggunaan cloud, ancaman terhadap keamanan data dan infrastruktur juga ikut berkembang. Setiap instance atau server virtual yang berjalan di cloud berisiko menjadi target serangan siber seperti akses tidak sah, eksploitasi kerentanan, dan serangan Distributed Denial of Service (DDoS). Oleh karena itu, menjaga keamanan instance menjadi prioritas penting bagi perusahaan yang menggunakan infrastruktur cloud.
@@ -298,9 +299,11 @@ Akses http://20.13.13.11/db_test_gan.php di browser. Jika koneksi berhasil, akan
 ![Verif](/images/verif-koneksi.png)
 
 - Pastikan bahwa hanya port yang diperlukan (HTTP, HTTPS, MySQL, SSH) yang terbuka di security group dan firewall, serta memastikan bahwa ping (ICMP) dapat dilakukan antar instance jika dibutuhkan untuk pengujian koneksi.
-![DB-sec](/images/DB-sec.png)
 
-![WEB-sec](/images/WEB-sec.png)
+<div style="display: flex; gap: 20px;">
+  <img src="/images/DB-sec.png" width="45%">
+  <img src="/images/WEB-sec.png" width="45%">
+</div>
 
 Sudah dipastikan, kedua instance aman karna port yang terbuka itu terbatas dan kedua instance tersebut hanya bisa diakses oleh IP Controller (admin).
 
