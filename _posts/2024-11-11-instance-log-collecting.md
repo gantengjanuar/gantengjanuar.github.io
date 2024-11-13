@@ -1,6 +1,6 @@
 ---
 title: 'Openstack Instance Log and Metric Collection using ELK Stack'
-date: 2024-10-11
+date: 2024-11-11
 permalink: /posts/2024/11/instance-log-collecting/
 tags:
   - Openstack
@@ -36,7 +36,7 @@ Dengan menerapkan alat seperti ElasticSearch, perusahaan dapat mengkonsolidasika
 ## Topologi Saya
 ![Topologi](/images/Topologi-1.png)
 
-Dari Openstack Cluster, deploy 2 instance dan keduanya dipasangkan FIlebeat dan Metricbeat, log dan metric dari kedua instance dikirim ke logstash untuk parsing lalu ke elasticsearch untuk dikelola lebih lanjut. Pada elasticsearch, dipasangkan X-PACK untuk mengamankan koneksi serta menambah fitur alerting. Lalu log dan metrics akan di viualisasikan menggunakan Kibana serta dibuat Alerting agar monitoring lebih aman.
+Dari Openstack Cluster, deploy 2 instance dan keduanya dipasangkan FIlebeat dan Metricbeat, log dan metric dari kedua instance dikirim ke logstash untuk parsing lalu ke elasticsearch untuk dikelola lebih lanjut. Pada elasticsearch, dipasangkan X-PACK untuk mengamankan koneksi serta menambah fitur alerting. Lalu log dan metrics akan di visualisasikan menggunakan Kibana serta dibuat Alerting agar monitoring lebih aman.
 
 ## Alur Kerja Saya
 ![Topologi](/images/Workflow-1.png)
@@ -69,7 +69,7 @@ OpenStack adalah platform komputasi awan (cloud computing) open-source yang dira
 OpenStack memungkinkan pengguna untuk mengelola resource komputasi, jaringan, dan storage dengan mudah dalam skala besar. Pengguna bisa melakukan otomatisasi pada penyebaran server, memantau kinerja, dan mengelola resource sesuai kebutuhan mereka.
 
 ## 6. Kolla-Ansible
-Kolla-Ansible adalah proyek open-source yang menyediakan alat untuk deployment (penyebaran) OpenStack menggunakan Docker container dan Ansible playbooks. Ini merupakan bagian dari ekosistem OpenStack Kolla, yang berfokus pada pengemasan layanan OpenStack ke dalam container untuk penyebaran yang lebih mudah dan konsisten. Beberapa fitur dan konsep penting dalam Kolla-Ansible adalah:
+Kolla-Ansible adalah proyek open-source yang menyediakan alat untuk deployment (penyebaran) OpenStack menggunakan Docker container dan Ansible playbooks. Ini merupakan bagian dari ekosistem OpenStack Kolla, yang berfokus pada pengemasan layanan OpenStack ke dalam container untuk penyebaran yang lebih mudah dan konsisten.
 
 ## 7. Instance
 Instance di OpenStack adalah sebuah virtual machine (VM) yang dijalankan di dalam lingkungan cloud OpenStack. Setiap instance merupakan unit komputasi yang di-boot menggunakan gambar (image) tertentu dan dijalankan di atas hypervisor yang dikelola oleh layanan Nova di OpenStack.
@@ -94,8 +94,8 @@ Kibana adalah alat visualisasi dan dashboard dalam ELK Stack yang digunakan untu
 
 
 ---
-# Langkah Persiapam | Instalasi
-Sebelum masuk ke pengerjaan, lakukan installasi / deployment terkait tools yang nantinya kita akan gunakan.
+# Langkah Persiapan | Instalasi
+Sebelum masuk ke pengerjaan, lakukan instalasi / deployment terkait tools yang nantinya kita akan gunakan.
 
 ## Deploy Openstack pada Controller
 
@@ -843,13 +843,13 @@ Setelah membuat dua Dashboard untuk memonitoring kedua Instance, tentu saja ga l
 $ sudo nano /etc/kibana/kibana.yml
 ```
 ```
-xpack. encryptedSavedObjects.encryptionkey: "2qlWjw69B8xKr8Gof4KNmN8JSGWqWEIF"
+xpack.encryptedSavedObjects.encryptionkey: "2qlWjw69B8xKr8Gof4KNmN8JSGWqWEIF"
 ```
 
 2.Buka **Side bar > observabillity > alerts > manage rules > create rules**.
 ![Alert](/images/alert-1.png)
 
-3.Pilih Metrics Threshold
+3.Pilih **Metrics Threshold**
 ![Alert](/images/alert-2.png)
 
 4.Buat Alert untuk kedua Instance, ketentuannya:

@@ -6,7 +6,7 @@ collection: portfolio
 ![Openstack-ElkStack](/images/Openstack-ELkStack.png)
 
 --- 
-# Project: **Mengumpulkan Log Instance pada Openstack Cluster Menggunakan ELK Stack**
+# Project: **Mengumpulkan Log & Metrics Instance pada Openstack Cluster Menggunakan ELK Stack**
 
 ## Deskripsi Project: 
 

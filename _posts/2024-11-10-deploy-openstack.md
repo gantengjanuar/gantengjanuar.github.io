@@ -1,6 +1,6 @@
 ---
 title: 'How To Deploy OpenStack With Kolla-Ansible'
-date: 2024-10-11
+date: 2024-11-10
 permalink: /posts/2024/11/deploy-openstack/
 tags:
   - Openstack
@@ -44,7 +44,7 @@ Kolla-Ansible adalah proyek open-source yang menyediakan alat untuk deployment (
 
 Kolla-Ansible sangat memudahkan penyebaran OpenStack bagi perusahaan atau tim yang ingin memiliki lingkungan cloud OpenStack dengan konfigurasi cepat, efisien, dan stabil.
 
-
+---
 # Langkah pengerjaan / Implementasi
 
 1.Install dependensi yang dibutuhkan.
