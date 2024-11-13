@@ -300,10 +300,9 @@ Akses http://20.13.13.11/db_test_gan.php di browser. Jika koneksi berhasil, akan
 
 - Pastikan bahwa hanya port yang diperlukan (HTTP, HTTPS, MySQL, SSH) yang terbuka di security group dan firewall, serta memastikan bahwa ping (ICMP) dapat dilakukan antar instance jika dibutuhkan untuk pengujian koneksi.
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="/images/DB-sec.png" alt="Database Security" style="width: 48%; margin-right: 2%;">
-  <img src="/images/WEB-sec.png" alt="Web Security" style="width: 48%;">
-</div>
+  ![DB-sec](/images/DB-sec.png)
+  
+  ![WEB-sec](/images/WEB-sec.png)
 
 Sudah dipastikan, kedua instance aman karna port yang terbuka itu terbatas dan kedua instance tersebut hanya bisa diakses oleh IP Controller (admin).
 
