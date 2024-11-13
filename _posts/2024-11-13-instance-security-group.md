@@ -75,7 +75,7 @@ $ openstack subnet list
 ```
 $ openstack network create ganteng-internal-net
 
-$ openstack subnet create -- network internal-net-ganteng \
+$ openstack subnet create -- network ganteng-internal-net \
   -- allocation-pool start=192.168.13.10, end=192.168.13.254 \
   -- dns-nameserver 8.8.8.8 -- gateway 192.168.13.1 \
   -- subnet-range 192.168.13.0/24 ganteng-internal-subnet
