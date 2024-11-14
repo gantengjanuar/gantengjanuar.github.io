@@ -348,9 +348,9 @@ $ source ~/kolla-venv/bin/activate
 ```
 $ wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
 
-$ openstack image create -- disk-format qcow2 \
-  -- container-format bare -- public \
-  -- file ./focal-server-cloudimg-amd64.img focal-image-ubuntu
+$ openstack image create --disk-format qcow2 \
+  --container-format bare --public \
+  --file ./focal-server-cloudimg-amd64.img focal-image-ubuntu
 
 $ openstack image list
 ```
@@ -358,15 +358,15 @@ $ openstack image list
 3.Buat external network serta subnetnya dan verifikasi.
 ```
 $ openstack network create --share --external \
-  -- provider-physical-network physnet1 \
-  -- provider-network-type flat external-net-ganteng
+  --provider-physical-network physnet1 \
+  --provider-network-type flat external-net-ganteng
 
 $ openstack network list
 ```
 ```
-$ openstack subnet create -- network external-net-ganteng \
-  -- gateway 20.13.13.1 -- no-dhcp \
-  -- subnet-range 20.13.13.0/24 external-subnet-ganteng
+$ openstack subnet create --network external-net-ganteng \
+  --gateway 20.13.13.1 --no-dhcp \
+  --subnet-range 20.13.13.0/24 external-subnet-ganteng
 
 $ openstack subnet list
 ```
@@ -375,10 +375,10 @@ $ openstack subnet list
 ```
 $ openstack network create internal-net-ganteng
 
-$ openstack subnet create -- network internal-net-ganteng \
-  -- allocation-pool start=10.100.13.10, end=10.100.13.254 \
-  -- dns-nameserver 8.8.8.8 -- gateway 10.100.13.1 \
-  -- subnet-range 10.100.13.0/24 internal-subnet-ganteng
+$ openstack subnet create --network internal-net-ganteng \
+  --allocation-pool start=10.100.13.10, end=10.100.13.254 \
+  --dns-nameserver 8.8.8.8 -- gateway 10.100.13.1 \
+  --subnet-range 10.100.13.0/24 internal-subnet-ganteng
 
 $ openstack network list
 $ openstack subnet list
@@ -387,7 +387,7 @@ $ openstack subnet list
 5.Buat router dan verifikasi.
 ```
 $ openstack router create router-ganteng
-$ openstack router set -- external-gateway external-net-ganteng router-ganteng
+$ openstack router set --external-gateway external-net-ganteng router-ganteng
 $ openstack router add subnet router-ganteng internal-subnet-ganteng
 
 $ openstack router list
@@ -396,8 +396,8 @@ $ openstack router list
 6.Buat security group yang mengizinkan protokol  ICMP dan TCP ssh dan verifikasi.
 ```
 $ openstack security group create gan-security-group
-$ openstack security group rule create -- protocol icmp gan-security-group
-$ openstack security group rule create -- protocol tcp -- ingress -- dst-port 22 gan-security-group
+$ openstack security group rule create --protocol icmp gan-security-group
+$ openstack security group rule create --protocol tcp --ingress --dst-port 22 gan-security-group
 
 $ openstack security group list
 $ openstack security group rule list gan-security-group
@@ -405,32 +405,32 @@ $ openstack security group rule list gan-security-group
 
 7.Buat keypair dan verifikasi
 ```
-$ openstack keypair create -- public-key ~/.ssh/id_rsa.pub ubuntu-key
+$ openstack keypair create --public-key ~/.ssh/id_rsa.pub ubuntu-key
 
 $ openstack keypair list
 ```
 
 8.Buat flavor dan verifikasi.
 ```
-$ openstack flavor create -- ram 2048 -- disk 8 -- vcpus 1 -- public mid-spec
-$ openstack flavor create -- ram 3072 -- disk 8 -- vcpus 1 -- public mid-spec-2
+$ openstack flavor create --ram 2048 --disk 8 --vcpus 1 --public mid-spec
+$ openstack flavor create --ram 3072 --disk 8 --vcpus 1 --public mid-spec-2
 
 $ openstack flavor list
 ```
 
 9.Launching instance node1-gan
 ```
-$ openstack server create -- flavor mid-spec \
-    -- image focal-image-ubuntu \
-    -- key-name ubuntu-key \
-    -- security-group gan-security-group \
-    -- network internal-net-ganteng \
-    node1-gan
+$ openstack server create --flavor mid-spec \
+--image focal-image-ubuntu \
+--key-name ubuntu-key \
+--security-group gan-security-group \
+--network internal-net-ganteng \
+node1-gan
 ```
 
 10.Pasang floating ip ke instance node1-gan dan verifikasi.
 ```
-$ openstack floating ip create -- floating-ip-address 20.13.13.34 external-net-ganteng
+$ openstack floating ip create --floating-ip-address 20.13.13.34 external-net-ganteng
 $ openstack server add floating ip nodel-gan 20.13.13.34
 
 $ openstack server list
@@ -443,17 +443,17 @@ $ ssh -o 'PubkeyAcceptedKeyTypes +ssh-rsa' ubuntu@20.13.13.34
 
 12. Launching instance node2-gan
 ```
-$ openstack server create -- flavor mid-spec-2 \
-    -- image focal-image-ubuntu \
-    -- key-name ubuntu-key \
-    -- security-group gan-security-group \
-    -- network internal-net-ganteng \
-    node2-gan
+$ openstack server create --flavor mid-spec-2 \
+--image focal-image-ubuntu \
+--key-name ubuntu-key \
+--security-group gan-security-group \
+--network internal-net-ganteng \
+node2-gan
 ```
 
 13.Pasang floating ip ke instance node2-gan dan verifikasi.
 ```
-$ openstack floating ip create -- floating-ip-address 20.13.13.119 external-net-ganteng
+$ openstack floating ip create --floating-ip-address 20.13.13.119 external-net-ganteng
 $ openstack server add floating ip node2-gan 20.13.13.119
 
 $ openstack server list
@@ -563,7 +563,7 @@ path.data: /var/lib/metricbeat
 
 
 output.elasticsearch:
-  # Set Elasticsearch host(s) here
+  # Set Elasticsearch host
   hosts: ["http://10.13.13.10:9200"]
   username: "elastic"
   password: "elastic"

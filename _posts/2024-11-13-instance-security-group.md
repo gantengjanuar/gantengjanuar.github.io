@@ -50,9 +50,9 @@ $ source ~/kolla-venv/bin/activate
 ```
 $ wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
 
-$ openstack image create -- disk-format qcow2 \
-  -- container-format bare -- public \
-  -- file ./focal-server-cloudimg-amd64.img ubuntu-image
+$ openstack image create --disk-format qcow2 \
+  --container-format bare --public \
+  --file ./focal-server-cloudimg-amd64.img ubuntu-image
 
 $ openstack image list
 ```
@@ -60,13 +60,13 @@ $ openstack image list
 3.Buat external network serta subnetnya dan verifikasi.
 ```
 $ openstack network create --share --external \
-  -- provider-physical-network physnet1 \
-  -- provider-network-type flat -ganteng-external-net
+  --provider-physical-network physnet1 \
+  --provider-network-type flat ganteng-external-net
 
 $ openstack network list
-$ openstack subnet create -- network ganteng-external-net \
-  -- gateway 20.13.13.1 -- no-dhcp \
-  -- subnet-range 20.13.13.0/24 ganteng-external-subnet
+$ openstack subnet create --network ganteng-external-net \
+  --gateway 20.13.13.1 --no-dhcp \
+  --subnet-range 20.13.13.0/24 ganteng-external-subnet
 
 $ openstack subnet list
 ```
@@ -75,10 +75,10 @@ $ openstack subnet list
 ```
 $ openstack network create ganteng-internal-net
 
-$ openstack subnet create -- network ganteng-internal-net \
-  -- allocation-pool start=192.168.13.10, end=192.168.13.254 \
-  -- dns-nameserver 8.8.8.8 -- gateway 192.168.13.1 \
-  -- subnet-range 192.168.13.0/24 ganteng-internal-subnet
+$ openstack subnet create --network ganteng-internal-net \
+  --allocation-pool start=192.168.13.10, end=192.168.13.254 \
+  --dns-nameserver 8.8.8.8 --gateway 192.168.13.1 \
+  --subnet-range 192.168.13.0/24 ganteng-internal-subnet
 
 $ openstack network list
 $ openstack subnet list
@@ -121,31 +121,31 @@ $ openstack security group create Webserver security
 
 8.Buat keypair dan verifikasi
 ```
-$ openstack keypair create -- public-key ~/.ssh/id_rsa.pub controller-key-gan
+$ openstack keypair create --public-key ~/.ssh/id_rsa.pub controller-key-gan
 
 $ openstack keypair list
 ```
 
 9.Buat flavor dan verifikasi.
 ```
-$ openstack flavor create -- ram 2048 -- disk 8 -- vcpus 1 -- public mid-spec
+$ openstack flavor create --ram 2048 --disk 8 --vcpus 1 --public mid-spec
 
 $ openstack flavor list
 ```
 
 10.Launching instance Web-instance
 ```
-$ openstack server create -- flavor mid-spec \
-    -- image ubuntu-image \
-    -- key-name controller-key-gan \
-    -- security-group Web security \
-    -- network ganteng-internal-net \
+$ openstack server create --flavor mid-spec \
+--image ubuntu-image \
+--key-name controller-key-gan \
+--security-group Web security \
+--network ganteng-internal-net \
 Web-instance
 ```
 
 11.Pasang floating ip ke instance Web-security dan verifikasi.
 ```
-$ openstack floating ip create -- floating-ip-address 20.13.13.11 ganteng-external-net
+$ openstack floating ip create --floating-ip-address 20.13.13.11 ganteng-external-net
 $ openstack server add floating ip Web-instance 20.13.13.11
 
 $ openstack server list
@@ -158,17 +158,17 @@ $ ssh -o 'PubkeyAcceptedKeyTypes +ssh-rsa' ubuntu@20.13.13.11
 
 13.Launching instance DB-instance
 ```
-$ openstack server create -- flavor mid-spec \
--- image ubuntu-image \
--- key-name controller-key-gan \
--- security-group Database security \
--- network ganteng-internal-net \
+$ openstack server create --flavor mid-spec \
+--image ubuntu-image \
+--key-name controller-key-gan \
+--security-group Database security \
+--network ganteng-internal-net \
 DB-instance
 ```
 
 14.Pasang floating ip ke instance DB dan verifikasi.
 ```
-$ openstack floating ip create -- floating-ip-address 20.13.13.200 ganteng-external-net
+$ openstack floating ip create --floating-ip-address 20.13.13.200 ganteng-external-net
 $ openstack server add floating ip DB-instance 20.13.13.200
 
 $ openstack server list
