@@ -192,6 +192,16 @@ enable_cinder_backend_lvm: "yes"
 ```
 > **Note:** ganti "**yes**" dengan "**no**" jika ingin menonaktifkan service nya.
 
+---
+## buat Cinder-volume VG di all node
+```
+$sudo pvcreate /dev/vdb 
+$ sudo vgcreate cinder-volumes /dev/vdb 
+$ sudo vgs
+```
+> **Note:** jalankan step ini di all node 
+
+
 10.Lakukan Booststrap , pre deploy , Deployment dan Post deploy.
 ```
 $ kolla-ansible -i ./multinode bootstrap-servers
