@@ -194,6 +194,7 @@ enable_cinder_backend_lvm: "yes"
 
 10.Lakukan Booststrap , pre deploy , Deployment dan Post deploy.
 ```
+$ kolla-ansible -i ./multinode bootstrap-servers
 $ kolla-ansible -i ./multinode prechecks
 $ kolla-ansible -i ./multinode deploy
 $ kolla-ansible -i ./multinode post-deploy
