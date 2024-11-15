@@ -13,5 +13,7 @@ tags:
 ![kolla openstack](/images/prome-grafana.png)
 
 # **Instance Monitoring With Prometheus & Grafana**
-Hallo semuanya!! Disini saya akan memberikan langkah-langkah deploy openstack menggunakan Kolla-Ansible.
-Sebelum masuk ke langkah langkah, kita harus kenalan dulu nih sama yang namanya Openstack dan Kolla ansible, sebenernya kedua itu apa sih?
+Blog ini merupakan dokumentasi sekaligus panduan lengkap mengenai cara Monitoring sebuah instance yang berada di Openstack cluster menggunakan Prometheus dan Grafana.
+
+...brb...
+
