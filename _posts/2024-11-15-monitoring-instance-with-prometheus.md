@@ -13,7 +13,7 @@ tags:
 ![kolla openstack](/images/prome-grafana.png)
 
 # **Instance Monitoring With Prometheus & Grafana**
-Blog ini merupakan dokumentasi sekaligus panduan lengkap mengenai cara Monitoring sebuah instance yang berada di Openstack cluster menggunakan Prometheus dan Grafana.
+Halloo semua!! sebelumnya kita udah monitoring Instance Openstack menggunakkan ELK Stack, sekarang kita akan monitoring menggunakan Prometheus!!. Blog ini merupakan dokumentasi sekaligus panduan lengkap mengenai cara Monitoring sebuah instance yang berada di Openstack cluster menggunakan Prometheus dan Grafana.
 
 oh ya, agar mudah dan efisien, saya disini memakai **cloud-init** yang isinya memungkinkan sebuah instance yang baru di launching langsung terpasang node expoerter sehingga kita bisa langsung memvisualisasikan data metrics nya lewat grafana.
 
@@ -31,8 +31,11 @@ Selain itu, pengelolaan instance dalam cloud juga membutuhkan cara otomatisasi y
 
 Oleh karena itu, blog ini akan membahas pentingnya monitoring instance untuk menjaga kestabilan operasional serta peran strategis cloud-init dalam otomatisasi konfigurasi instance di lingkungan cloud. Penjelasan ini diharapkan memberikan gambaran yang lebih jelas mengenai bagaimana kombinasi monitoring dan cloud-init dapat mendukung manajemen infrastruktur modern secara efektif.
 
+---
 # Langkah Pengerjaan | Implementasi
-Pada kesempatan kali ini, saya akan Launching Instance yang nantinya dipasangkan cloud config berisi instalasi dan konfigurasi node exporter lalu memonitoringnya menggunakan Prometheus dan Grafana. 
+Pada kesempatan kali ini, saya akan Launching Instance yang nantinya dipasangkan cloud init berisi instalasi dan konfigurasi node exporter lalu memonitoringnya menggunakan Prometheus dan Grafana. 
+
+> **Note** : Seluruh langkah pengerjaan disini adalah pengerjaan sendiri, sehingga mungkin jika anda ingin mencoba melakukannya juga, anda bisa menyesuaikan dengan environment anda sendiri, seperti penamaan ataupun IP dari VM.
 
 ## 1. Openstack
 Pertama-tama, pastikan sudah melakukan Instalasi atau deployment Openstack terlebih dahulu, jika belum bisa ikuti panduan ini [How To Deploy Openstack With Kolla-Ansible](https://gantengjanuar.github.io//posts/2024/11/deploy-openstack/)
@@ -285,7 +288,7 @@ runcmd:
 
 ```
 
-10.Launching instance node1-gan
+10.Launching instance.
 ```
 $ openstack server create --flavor mid-spec \
 --image ubuntu-image \
@@ -296,7 +299,7 @@ $ openstack server create --flavor mid-spec \
 gan-node1
 ```
 
-11.Pasang floating ip ke instance node1-gan dan verifikasi.
+11.Pasang floating ip ke instance dan verifikasi.
 ```
 $ openstack floating ip create --floating-ip-address 20.13.13.132 ganteng-external-net
 $ openstack server add floating ip gan-node1 20.13.13.132
@@ -305,9 +308,9 @@ $ openstack server list
 ```
 ## Verifikasi metrics Instance
 
-1.Coba akses instance gan-node1.
+1.Coba akses instance.
 ```
-$ ssh -o 'PubkeyAcceptedKeyTypes +ssh-rsa' ubuntu@20.13.13.132
+$ ssh ubuntu@20.13.13.132
 ```
 
 2.Verifikasi node exporter udah berjalan.
@@ -316,7 +319,7 @@ $ sudo systemctl status node_exporter.service
 ```
 
 3.Verifikasi metrics berhasil terkirim ke Prometheus server
-* Buka browser > akses http://10.13.13.10:9090/targets dan pastikan instance yang di launching tampil dengan keadaan up.
+* Buka browser > akses **http://10.13.13.10:9090/targets** dan pastikan instance yang di launching tampil dengan keadaan up.
 
 ![prome](/images/prome-1.png)
 
