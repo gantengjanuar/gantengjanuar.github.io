@@ -214,8 +214,8 @@ $ openstack subnet list
 5.Buat router dan verifikasi.
 ```
 $ openstack router create router-ganteng
-$ openstack router set --external-gateway external-net-ganteng router-ganteng
-$ openstack router add subnet router-ganteng internal-subnet-ganteng
+$ openstack router set --external-gateway ganteng-external-net router-ganteng
+$ openstack router add subnet router-ganteng ganteng-internal-subnet
 
 $ openstack router list
 ```
@@ -298,13 +298,47 @@ gan-node1
 
 11.Pasang floating ip ke instance node1-gan dan verifikasi.
 ```
-$ openstack floating ip create --floating-ip-address 20.13.13.132 external-net-ganteng
+$ openstack floating ip create --floating-ip-address 20.13.13.132 ganteng-external-net
 $ openstack server add floating ip gan-node1 20.13.13.132
 
 $ openstack server list
 ```
+## Verifikasi metrics Instance
 
-12.Coba akses instance gan-node1.
+1.Coba akses instance gan-node1.
 ```
 $ ssh -o 'PubkeyAcceptedKeyTypes +ssh-rsa' ubuntu@20.13.13.132
 ```
+
+2.Verifikasi node exporter udah berjalan.
+```
+$ sudo systemctl status node_exporter.service
+```
+
+3.Verifikasi metrics berhasil terkirim ke Prometheus server
+* Buka browser > akses http://10.13.13.10:9090/targets dan pastikan instance yang di launching tampil dengan keadaan up.
+
+![prome](/images/prome-1.png)
+
+---
+
+## Visualisasi dengan Grafana menggunakan Template
+
+1.Akses Grafana lewat port 3000 di browser **10.13.13.10:3000** 
+> Sesuaikan ip nya.
+
+2.Buka browser, cari **node exporter full grafana dashboard** dan klik link paling atas.
+![grafana](/images/prome-2.png)
+
+3.Scroll dikit kebawah, lalu di bagian kanan ada **Copy ID Dashboard** lalu klik dan simpan id Template dashboard.
+
+4.Buka kembali grafana. klik **Home > Dashboard > New > New Dashboard**
+![grafana](/images/prome-3.png)
+
+5.Klik **Import a Dashboard** lalu masukkan ID yang sudah di copy sebelumnya dan klik **load**.
+![grafana](/images/prome-4.png)
+
+6.Sesuaikan Nama, UID, data source, dll. lalu klik **import**
+
+7.Dan ya, sekarang kita memiliki Dashboard yang sangat lengkap dan dapat memonitoring instance kita.
+![grafana](/images/prome-5.png)
