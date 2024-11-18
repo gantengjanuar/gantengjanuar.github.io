@@ -69,7 +69,7 @@ scrape_configs:
       - identity_endpoint: http://10.13.13.100:5000 #URL keystone
         username: admin
         project_name: admin
-        password: xVVXVxFhl60w1GCEbJTEi3EHmG2BHilByawIV337 #ganti dengan password di /etc/kolla/
+        password: xVVXVxFhl60w1GCEbJTEi3EHmG2BHilByawIV337 #ganti dengan password di /etc/kolla/admin-openrc.sh
         region: RegionOne
         role: instance
         domain_name: Default
@@ -163,3 +163,147 @@ URL: http://10.13.13.10:9090
 save & test
 ```
 ---
+
+## Launching Instance
+1.Aktifkan admin kredensial dan aktifkan virtual env.
+```
+$ source /etc/kolla/admin-openrc.sh
+$ source ~/kolla-venv/bin/activate
+```
+
+2.Buat image Ubuntu 20.04 LTS lalu verifikasi
+```
+$ wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+
+$ openstack image create --disk-format qcow2 \
+  --container-format bare --public \
+  --file ./focal-server-cloudimg-amd64.img ubuntu-image
+
+$ openstack image list
+```
+
+3.Buat external network serta subnetnya dan verifikasi.
+```
+$ openstack network create --share --external \
+  --provider-physical-network physnet1 \
+  --provider-network-type flat ganteng-external-net
+
+$ openstack network list
+```
+```
+$ openstack subnet create --network ganteng-external-net \
+  --gateway 20.13.13.1 --no-dhcp \
+  --subnet-range 20.13.13.0/24 ganteng-external-subnet
+
+$ openstack subnet list
+```
+
+4.Buat Internal network serta subnetnya dan verifikasi.
+```
+$ openstack network create ganteng-internal-net
+
+$ openstack subnet create --network ganteng-internal-net \
+  --allocation-pool start=10.100.13.10,end=10.100.13.254 \
+  --dns-nameserver 8.8.8.8 --gateway 10.100.13.1 \
+  --subnet-range 10.100.13.0/24 ganteng-internal-subnet
+
+$ openstack network list
+$ openstack subnet list
+```
+
+5.Buat router dan verifikasi.
+```
+$ openstack router create router-ganteng
+$ openstack router set --external-gateway external-net-ganteng router-ganteng
+$ openstack router add subnet router-ganteng internal-subnet-ganteng
+
+$ openstack router list
+```
+
+6.Buat security group yang spesifikasi rule nya:
+```
+$ openstack security group create gan-security-group
+
+| Direction | Ether Type | IP Protocol | Port Range | Remote IP Prefix | 
+|-----------|------------|-------------|------------|-------------------|
+| Egress    | IPv4       | Any         | Any        | 0.0.0.0/0         | 
+| Egress    | IPv6       | Any         | Any        | ::/0              |
+| Ingress   | IPv4       | ICMP        | Any        | 0.0.0.0/0         | 
+| Ingress   | IPv4       | TCP         | 9100       | 0.0.0.0/0         | 
+
+
+
+$ openstack security group list
+```
+
+7.Buat keypair dan verifikasi
+```
+$ openstack keypair create --public-key ~/.ssh/id_rsa.pub controller-key
+
+$ openstack keypair list
+```
+
+8.Buat flavor dan verifikasi.
+```
+$ openstack flavor create --ram 2048 --disk 8 --vcpus 1 --public mid-spec
+
+$ openstack flavor list
+```
+
+9.Buat **Cloud-init** yang berisi node exporter.
+```
+#cloud-config
+write_files:
+  - path: /etc/systemd/system/node_exporter.service
+    permissions: '0644'
+    owner: root:root
+    content: |
+      [Unit]
+      Description=Node Exporter
+      Wants=network-online.target
+      After=network-online.target
+
+      [Service]
+      User=node_exporter
+      ExecStart=/usr/local/bin/node_exporter
+      Restart=always
+
+      [Install]
+      WantedBy=default.target
+
+runcmd:
+  - mkdir -p /opt/node_exporter
+  - cd /opt/node_exporter
+  - wget https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
+  - tar -xzf node_exporter-1.6.1.linux-amd64.tar.gz
+  - cp node_exporter-1.6.1.linux-amd64/node_exporter /usr/local/bin/
+  - useradd -rs /bin/false node_exporter
+  - systemctl daemon-reload
+  - systemctl enable node_exporter
+  - systemctl start node_exporter
+
+```
+
+10.Launching instance node1-gan
+```
+$ openstack server create --flavor mid-spec \
+--image ubuntu-image \
+--key-name controller-key \
+--security-group gan-security-group \
+--network ganteng-internal-net \
+--user-data cloud-config.yml \
+gan-node1
+```
+
+11.Pasang floating ip ke instance node1-gan dan verifikasi.
+```
+$ openstack floating ip create --floating-ip-address 20.13.13.132 external-net-ganteng
+$ openstack server add floating ip gan-node1 20.13.13.132
+
+$ openstack server list
+```
+
+12.Coba akses instance gan-node1.
+```
+$ ssh -o 'PubkeyAcceptedKeyTypes +ssh-rsa' ubuntu@20.13.13.132
+```
