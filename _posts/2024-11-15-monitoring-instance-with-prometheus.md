@@ -223,6 +223,7 @@ $ openstack router list
 6.Buat security group yang spesifikasi rule nya:
 ```
 $ openstack security group create gan-security-group
+```
 
 | Direction | Ether Type | IP Protocol | Port Range | Remote IP Prefix | 
 |-----------|------------|-------------|------------|-------------------|
@@ -232,7 +233,7 @@ $ openstack security group create gan-security-group
 | Ingress   | IPv4       | TCP         | 9100       | 0.0.0.0/0         | 
 
 
-
+```
 $ openstack security group list
 ```
 
