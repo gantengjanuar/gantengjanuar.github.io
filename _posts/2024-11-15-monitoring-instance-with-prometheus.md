@@ -18,6 +18,7 @@ Blog ini merupakan dokumentasi sekaligus panduan lengkap mengenai cara Monitorin
 oh ya, agar mudah dan efisien, saya disini memakai **cloud-init** yang isinya memungkinkan sebuah instance yang baru di launching langsung terpasang node expoerter sehingga kita bisa langsung memvisualisasikan data metrics nya lewat grafana.
 
 selain itu, saya juga menggunakan **template dashboard** grafana sehingga kita bisa monitoring node secara full tanpa memikirkan query nya. menarik bukan... ikuti caranya!!
+
 ---
 
 ## Latar Belakang
