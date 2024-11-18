@@ -38,6 +38,8 @@ Pada kesempatan kali ini, saya akan Launching Instance yang nantinya dipasangkan
 Pertama-tama, pastikan sudah melakukan Instalasi atau deployment Openstack terlebih dahulu, jika belum bisa ikuti panduan ini [How To Deploy Openstack With Kolla-Ansible](https://gantengjanuar.github.io//posts/2024/11/deploy-openstack/)
 
 ## 2. Prometheus
+Lakukan instalasi Prometheus Server di node controller, seperti ini:
+
 1.pindah ke root dan unduh Prometheus Server di node controller.
 ```
 $ sudo su -
@@ -116,3 +118,48 @@ Target : http://10.13.13.10:9090/targets
 ```
 > **Note:** Ganti dengan IP Controller!
 
+## 3. Grafana
+Lakukan juga instalasi grafana untuk kita membuat visualisasinya.
+
+1.Install grafana di node Controller
+```
+$ sudo su -
+# cd /opt
+# wget https://dl.grafana.com/enterprise/release/grafana-enterprise-11.3.0.linux-amd64.tar.gz
+# tar -zxvf grafana-enterprise-11.3.0.linux-amd64.tar.gz
+```
+
+2.Jalankan Grafana sebagai service.
+```
+# vim /etc/systemd/system/grafana.service
+
+[Unit]
+Description=Grafana
+
+[Service]
+User=root
+ExecStart=/opt/grafana-v11.3.0/bin/grafana-server -homepath /opt/grafana-v11.3.0/ web
+
+[Install]
+WantedBy=default.target
+```
+
+3.Jalankan service grafana.
+```
+# systemctl daemon-reload
+# systemctl enable grafana.service
+# systemctl start grafana.service
+# systemctl status grafana.service
+# journalctl -u grafana
+```
+
+3.Akses http://10.13.13.10:3000/login di browser.
+
+4.Tambahkan Prometheus data source. Login ke grafana **dashboard > Configuration > Data sources > Add data source.**
+```
+Type: Prometheus
+Name: Prometheus-username
+URL: http://10.13.13.10:9090
+save & test
+```
+---
