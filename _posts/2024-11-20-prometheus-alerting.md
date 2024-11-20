@@ -176,10 +176,10 @@ rule_files:
 
 9.Cek Alerts apakah sudah terbuat
 ```
-http://10.X.X.10:9090/config
-http://10.X.X.10:9090/rules
-http://10.X.X.10:9090/alerts
-http://10.X.X.10:9093/#/status
+http://10.13.13.10:9090/config
+http://10.13.13.10:9090/rules
+http://10.13.13.10:9090/alerts
+http://10.13.13.10:9093/#/status
 ```
 ![alerting](/images/alerting-7.png)
 
