@@ -113,5 +113,74 @@ receivers:
           *Instance:* {{ .CommonLabels.instance }}
 ```
 
-3.
-        
+4.Jalankan AlertManager sebagai service     
+```
+# vim /etc/systemd/system/alert_manager.service
+```
+```
+[Unit]
+Description=Alert Manager
+
+[Service]
+User=root
+ExecStart=/opt/alertmanager-0.26.0.linux-amd64/alertmanager --config.file=/opt/alertmanager-0.26.0.linux-amd64/config.yml --web.external-url=http://10.13.13.10:9093/ --log.level=debug #IP controller
+
+[Install]
+WantedBy=default.target
+```
+
+5.Cek konfigurasi dan start AlertManager
+```
+# ./amtool check-config config.yml
+# systemctl daemon-reload
+# systemctl enable alert_manager.service
+# systemctl start alert_manager.service
+# systemctl status alert_manager.service
+```
+6.Buat alert untuk mendeteksi ketika **intance down**
+```
+# cd /opt/prometheus-2.48.0.linux-amd64/
+# vim alerts_rules.yml 
+groups:
+- name: Instance.rules
+  rules:
+  - alert: node1-ganDown
+    expr: up{instance="gan-node1", job="openstack-sd"} == 0
+    for: 2m
+    annotations:
+      summary: "Instance node1-gan mati"
+      description: "Instance 'node1-gan' has been down for more than 2 minute."
+```
+
+7.Tambahkan konfigurasi alerts di config.yml
+```
+# vim config.yml
+```
+```
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - 10.13.13.10:9093 #IP Controller
+
+rule_files:
+  - "alerts_rules.yml"
+```
+
+8.Cek konfigurasi dan restart prometheus server.
+```
+# ./promtool check config config.yml
+# systemctl restart prometheus_server
+```
+
+9.Cek Alerts apakah sudah terbuat
+```
+http://10.X.X.10:9090/config
+http://10.X.X.10:9090/rules
+http://10.X.X.10:9090/alerts
+http://10.X.X.10:9093/#/status
+```
+![alerting](/images/alerting-7.png)
+
+---
