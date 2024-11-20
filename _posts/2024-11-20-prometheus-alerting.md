@@ -45,7 +45,7 @@ $ sudo su -
 ```
 2.Dapatkan password aplikasi google, Webhook Discord dan juga Slack
 * Gmail
-  Kita memerlukan password aplikasi google, yang bisa didapatkan [disini](https://myaccount.google.com/u/0/apppasswords) 
+  1. Kita memerlukan password aplikasi google, yang bisa didapatkan [disini](https://myaccount.google.com/u/0/apppasswords) 
 
 * Discord
   1. Buat sebuah channel "Alert" lalu klik **edit channel**
@@ -71,6 +71,8 @@ $ sudo su -
 ```
 # cd alertmanager-0.26.0.linux-amd64
 # vim config.yml
+```
+
 ```
 global:
   resolve_timeout: 5m
