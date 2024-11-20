@@ -184,3 +184,28 @@ http://10.X.X.10:9093/#/status
 ![alerting](/images/alerting-7.png)
 
 ---
+
+# Tes Alerting
+Karena alert sudah terbuat, sekarang saatnya melakukan pengujiannya nih, kita bisa ngecek apakah alert sesuai yang diinginkan dengan mematikan sebuah Instance.
+
+1.Matikan Instance Openstack
+![alerting](/images/matiin-instance.png)
+
+2.Tunggu hingga status alert menjadi **pending** lalu **Firing**.
+![alerting](/images/matiin-instance-1.png)
+
+![alerting](/images/matiin-instance-2.png)
+
+3.Periksa notif Alert
+  * Gmail
+  ![alerting](/images/matiin-instance-3.png)
+
+  * Discord
+  ![alerting](/images/matiin-instance-4.png)
+
+  * Slack
+  ![alerting](/images/matiin-instance-5.png)
+
+4.Jika ingin tes notif resolve, bisa tinggal nyalakan kembali instance dan liat notifikasi yang didapat.
+![alerting](/images/matiin-instance-6.png)
+
