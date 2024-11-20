@@ -8,6 +8,7 @@ tags:
   - Tutorial
   - Prometheus
   - Cloud-init
+  - Grafana
 ---
 
 ![kolla openstack](/images/prome-grafana.png)
