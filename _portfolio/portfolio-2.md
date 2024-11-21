@@ -10,7 +10,7 @@ collection: portfolio
 
 ## Deskripsi Project: 
 
-Pada project ini, saya mengatasi masalah dimana tim operasi membutuhkan tools atau alat Monitoring seperti Dashboard untuk memantau status dan kondisi dari sebuah instance supaya bisa mendeteksi masalah lebih dini. Metrics Instance saya ambil menggunakan **Prometheus** dan nanti akan di visualisasikan di **Grafana** dengan bentuk Dashboard. Saya juga membuat Alert supaya ketika instance mati akan ada peringatan yang dikirim melalui **AlertManager** ke **Gmail, **Discord**, dan juga **Slack**
+Pada project ini, saya mengatasi masalah dimana tim operasi membutuhkan tools atau alat Monitoring seperti Dashboard untuk memantau status dan kondisi dari sebuah instance supaya bisa mendeteksi masalah lebih dini. Metrics Instance saya ambil menggunakan **Prometheus** dan nanti akan di visualisasikan di **Grafana** dengan bentuk Dashboard. Saya juga membuat Alert supaya ketika instance mati akan ada peringatan yang dikirim melalui **AlertManager** ke **Gmail**, **Discord**, dan juga **Slack**
 
 Untuk launching Instance nya saya juga menambahkan **cloud-init** supaya ketika di launching nanti instance sudah terpasang **node exporter**
 
@@ -31,7 +31,7 @@ Saya berhasil membuat Dashboard yang akan digunakan untuk memantau kondisi sebua
 ## Alerting | Instance Down
 ![Alert](/images/prome-alert.png)
 
-# Alerting  | Gmail-Discord-Slack
+# Tes Alerting  | Gmail-Discord-Slack
 ![alerting](/images/matiin-instance-3.png)
 
 ![alerting](/images/matiin-instance-4.png)
