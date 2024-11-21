@@ -1,55 +1,39 @@
 ---
-title: "Project: Creating simple Game With Python"
-excerpt: " <br/><img src='/images/AIR.png' width='300'>"
+title: "Project: Collecting Metrics Instance Openstack With Prometheus dan Grafana"
+excerpt: " <br/><img src='/images/monitor.png' width='300'>"
 collection: portfolio
 ---
-   
+![Openstack-ElkStack](/images/metrics.png)
+
+--- 
+# Project: **Mengumpulkan Metrics Instance pada Openstack Cluster Menggunakan Prometheus dan Grafana**
+
+## Deskripsi Project: 
+
+Pada project ini, saya mengatasi masalah dimana tim operasi membutuhkan tools atau alat Monitoring seperti Dashboard untuk memantau status dan kondisi dari sebuah instance supaya bisa mendeteksi masalah lebih dini. Metrics Instance saya ambil menggunakan **Prometheus** dan nanti akan di visualisasikan di **Grafana** dengan bentuk Dashboard. Saya juga membuat Alert supaya ketika instance mati akan ada peringatan yang dikirim melalui **AlertManager** ke **Gmail, **Discord**, dan juga **Slack**
+
+Untuk launching Instance nya saya juga menambahkan **cloud-init** supaya ketika di launching nanti instance sudah terpasang **node exporter**
 
 ---
-![Airstrike](/images/Airstrike-3.png)
+## Hasil Akhir Project
+Saya berhasil membuat Dashboard yang akan digunakan untuk memantau kondisi sebuah Instance secara full, dimulai dari kondisi Disk, CPU, Memory, Network, dll, Selain itu saya juga membuat Alert untuk Instance yang akan dikirim via Gmail, Discord, dan Slack. Saya juga membuat Blog berisi Dokumentasi yang bisa dibaca dan dilihat [disini | Instance Monitoring](https://gantengjanuar.github.io//posts/2024/11/prometheus-instance-monitoring/) dan [disini | Alerting](https://gantengjanuar.github.io//posts/2024/11/prometheus-instance-monitoring/)
 
-# Project: **Membuat Game Menggunakan Bahasa Pemograman Python**
+---
+## Dashboard | Basic Info
+![hasil Akhir](/images/basic-info.png)
 
-**Deskripsi Project:**  
-Project ini adalah salah satu dari tugas akhir di kelas XI yang diberikan oleh guru produktif saya, yaitu **Membuat game sederhana** , pada project ini saya dan teman saya membuat game bertemakan "Pesawat Tempur Simple, casual, and fun" yang dibuat menggunakan bahasa pemrograman Python.
-
-Pada project ini, saya dan teman saya berhasil mendapatkan nilai terbaik diantara teman teman satu kelas saya. Kontribusi saya pada project kali ini antara lain:
-- Menentukan konsep ‘simple casual and fun game’
-- Membuat Flowchart untuk mengatur alur permainan dari awal hingga akhir
-- Membantu proses coding menggunakan bahasa pemrograman Python di VSCode dalam proses pembuatan game
-- Melakukan research dan membuat Asset game berupa gambar, audio, font, dll. yang akan dipakai dalam game
-- Membuat laporan perkembangan game sebagai penilaian akhir proyek menggunakan Ms. Word dan Canva
-
-
-
-### Deskripsi Game
-
-Air Strike adalah game 2D kasual yang bertemakan pesawat tempur. Dalam game ini Anda akan disuruh untuk mengalahkan semua musuh tanpa akhir dan mengejar skor sebanyak banyakanya dan menjadi yang terbaik, tak lupa juga di game ini Anda harus berhati-hati karena musuh di game ini cukup kuat dan terdapat fitur bahan bakar yang dimana jika habis maka Anda akan kalah. 
-
-Jadilah yang terbaik dalam mengejar skor di game ini !
-
-**Teknologi yang digunakan:**  
-* Visual Studio Code (VS Code) – sebagai editor kode
-* Python – sebagai bahasa pemrograman
-
-**Fitur Utama Game:**
-* Home page and Game over page
-* Score
-* Generate random enemy
-* Generate random fuel and power-up
-* Backrground music
-* Plane, bullet, and explosion sound effect
-
-## Screenshot Game
-![ss game](/images/ss-Airstrike.png)
+---
+## Dashboard | CPU-Memory-Network-Disk
+![hasil Akhir](/images/cpu-memory.png)
 
 ---
 
-**Tautan:**
+## Alerting | Instance Down
+![Alert](/images/prome-alert.png)
 
-* [PPT Laporan Akhir](https://www.canva.com/design/DAGWEY-K4b8/AehxTHNkPEt4riQX-nJMiA/edit?utm_content=DAGWEY-K4b8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)  
+# Alerting  | Gmail-Discord-Slack
+![alerting](/images/matiin-instance-3.png)
 
-* [Repository GitHub](https://github.com/gantengjanuar/Airstrike)
+![alerting](/images/matiin-instance-4.png)
 
----
-
+![alerting](/images/matiin-instance-5.png)
