@@ -1,6 +1,6 @@
 ---
 title: "Project: Collecting Metrics Instance Openstack With Prometheus dan Grafana"
-excerpt: " <br/><img src='/images/monitor.png' width='300'>"
+excerpt: " <br/><img src='/images/metrics.png' width='300'>"
 collection: portfolio
 ---
 ![Openstack-ElkStack](/images/metrics.png)
