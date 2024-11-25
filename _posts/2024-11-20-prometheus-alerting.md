@@ -27,7 +27,7 @@ Dalam era digital, infrastruktur IT menjadi tulang punggung bagi operasional bis
 
 ## Alerting
 
-Simpelnya, Alerting adalah proses pemberitahuan atau pengiriman notifikasi secara otomatis saat kondisi tertentu terpenuhi dalam suatu sistem atau infrastruktur IT. Proses ini biasanya menggunakan alat monitoring seperti Prometheus, Grafana, Kibana, atau sistem serupa yang mendeteksi kejadian atau metrik tertentu, seperti lonjakan penggunaan CPU, kegagalan disk, atau akses tak sah. Alerting dirancang untuk memberitahukan tim atau individu yang bertanggung jawab, melalui berbagai saluran seperti email, Slack, SMS, atau dashboard.
+Simpelnya, **Alerting** adalah proses pemberitahuan atau pengiriman notifikasi secara otomatis saat kondisi tertentu terpenuhi dalam suatu sistem atau infrastruktur IT. Proses ini biasanya menggunakan alat monitoring seperti Prometheus, Grafana, Kibana, atau sistem serupa yang mendeteksi kejadian atau metrik tertentu, seperti lonjakan penggunaan CPU, kegagalan disk, atau akses tak sah. Alerting dirancang untuk memberitahukan tim atau individu yang bertanggung jawab, melalui berbagai saluran seperti email, Slack, SMS, atau dashboard.
 
 ---
 
