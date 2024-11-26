@@ -140,7 +140,10 @@ WantedBy=default.target
 6.Buat alert untuk mendeteksi ketika **intance down**
 ```
 # cd /opt/prometheus-2.48.0.linux-amd64/
+```
+```
 # vim alerts_rules.yml 
+
 groups:
 - name: Instance.rules
   rules:
@@ -157,7 +160,6 @@ groups:
 # vim config.yml
 ```
 ```
-
 alerting:
   alertmanagers:
   - static_configs:
@@ -174,7 +176,7 @@ rule_files:
 # systemctl restart prometheus_server
 ```
 
-9.Cek Alerts apakah sudah terbuat
+9.Cek Alerts apakah sudah terbuat.
 ```
 http://10.13.13.10:9090/config
 http://10.13.13.10:9090/rules
@@ -188,7 +190,7 @@ http://10.13.13.10:9093/#/status
 # Tes Alerting
 Karena alert sudah terbuat, sekarang saatnya melakukan pengujiannya nih, kita bisa ngecek apakah alert sesuai yang diinginkan dengan mematikan sebuah Instance.
 
-1.Matikan Instance Openstack
+1.Matikan Instance Openstack.
 ![alerting](/images/matiin-instance.png)
 
 2.Tunggu hingga status alert menjadi **pending** lalu **Firing**.
@@ -196,7 +198,7 @@ Karena alert sudah terbuat, sekarang saatnya melakukan pengujiannya nih, kita bi
 
 ![alerting](/images/matiin-instance-2.png)
 
-3.Periksa notif Alert
+3.Periksa notif Alert.
   * Gmail
   ![alerting](/images/matiin-instance-3.png)
 
