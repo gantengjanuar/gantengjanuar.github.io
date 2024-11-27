@@ -10,7 +10,8 @@ tags:
 
 ![alert](/images/kube-banner.png)
 
-# **Memahami Kubernetes Architecture dengan Mudah Menggunakan Analogi**
+# **Memahami Arsitektur Kubernetes dengan Mudah Menggunakan Analogi**
+
 Hellooooooww! 👋
 
 disini saya akan ngebahas arsitektur dari salah satu alat orkestrasi kontainer yang sangat terkenal dan powerfull nih, yaitu **Kubernetes**. Sebelum ke praktik kubernetes, baiknya kita memahami terlebih dahulu apa aja sih komponen penting yang perlu kita kenali agar lebih memahami mengenai Kubernetes.
