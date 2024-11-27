@@ -11,7 +11,7 @@ tags:
 ![alert](/images/kube-banner.png)
 
 # **Memahami Kubernetes Architecture dengan Mudah Menggunakan Analogi**
-Hellooooooww :b, disini saya akan ngebahas arsitektur dari salah satu alat orkestrasi kontainer yang sangat terkenal dan powerfull nih, yaitu **Kubernetes**. Sebelum ke praktik kubernetes, baiknya kita memahami terlebih dahulu apa aja sih komponen penting yang nantinya akan kita kenali/
+Hellooooooww :b, disini saya akan ngebahas arsitektur dari salah satu alat orkestrasi kontainer yang sangat terkenal dan powerfull nih, yaitu **Kubernetes**. Sebelum ke praktik kubernetes, baiknya kita memahami terlebih dahulu apa aja sih komponen penting yang perlu kita kenali agar lebih memahami mengenai Kubernetes.
 
 Nah supaya mudah, disini saya akan menjelaskan komponen yang ada di **Kubernetes Arsitektur** menggunakan **Analogi**!! Langsung aja kita kenalan terlebih dahulu sama Kubernetes, sebenernya Kubernetes itu apa sih?
 
@@ -24,19 +24,19 @@ Nah supaya mudah, disini saya akan menjelaskan komponen yang ada di **Kubernetes
 Menurut situs web kubernetes.io, Kubernetes adalah: 
 > "Open Source System untuk mengotomatiskan penyebaran, penskalaan, dan manajemen aplikasi yang terkontainerisasi".
 
-Kubernetes, sering disingkat **K8s**, adalah platform open-source yang dirancang untuk mengelola dan mengatur container—unit kecil yang berisi aplikasi beserta semua dependensinya. Dengan analogi, kita bisa membayangkan **aplikasi sebagai produk makanan cepat saji**, maka **Kubernetes adalah sistem dapur** yang memastikan semua burger, kentang goreng, dan minuman siap dengan cepat, dalam jumlah yang tepat, dan dikirim ke pelanggan tanpa gangguan.
+Kubernetes, sering disingkat **K8s**, adalah platform open-source yang dirancang untuk mengelola dan mengatur container yang berisi aplikasi beserta semua dependensinya. Dengan analogi, kita bisa membayangkan **aplikasi sebagai produk makanan cepat saji**, maka **Kubernetes adalah sistem dapur** yang memastikan semua burger, kentang goreng, dan minuman siap dengan cepat, dalam jumlah yang tepat, dikirim ke pelanggan tanpa gangguan dan tentu saja rasa yang nikmat😋✨.
 
-Awalnya dikembangkan oleh Google dan kini dikelola oleh **Cloud Native Computing Foundation (CNCF)**, Kubernetes membantu perusahaan menjalankan aplikasi mereka di berbagai lingkungan dari data center pribadi hingga layanan cloud seperti AWS, Azure, atau Google Cloud.
+Awalnya dikembangkan oleh Google dan kini dikelola oleh **Cloud Native Computing Foundation (CNCF)**, Kubernetes ini membantu perusahaan menjalankan aplikasi mereka di berbagai lingkungan dari data center pribadi hingga layanan cloud seperti AWS, Azure, atau Google Cloud.
 
 ## Mengapa Kubernetes Sangat Penting?
 
-Dalam dunia teknologi modern, aplikasi harus:
+Dalam dunia teknologi modern, aplikasi itu harus:
 
-1. Cepat dan fleksibel untuk memenuhi kebutuhan pengguna.
-2. Dapat diandalkan, meskipun terjadi gangguan.
-3. Efisien dalam menggunakan sumber daya, sehingga menghemat biaya.
+1. **Cepat dan fleksibel** untuk memenuhi kebutuhan pengguna.
+2. **Dapat diandalkan**, meskipun terjadi gangguan.
+3. **Efisien** dalam menggunakan sumber daya, sehingga menghemat biaya.
 
-Kubernetes mempermudah pengelolaan aplikasi modern yang sering terdiri dari puluhan atau bahkan ratusan container. Tanpa Kubernetes, mengelola container ini seperti mencoba mengatur ribuan pemain di sebuah konser musik tanpa instruksi yang jelas akan sangat kacau! Kubernetes adalah **konduktor** yang memastikan semuanya berjalan harmonis.
+Kubernetes mempermudah pengelolaan aplikasi modern yang sering terdiri dari puluhan atau bahkan ratusan container. Tanpa Kubernetes, mengelola container ini seperti mencoba mengatur ribuan pemain di sebuah konser musik tanpa instruksi yang jelas dan tentunya akan menyebabkan kekacauan, nah ini Kubernetes seperti **konduktor** yang memastikan semuanya berjalan harmonis.
 
 ![kube](/images/analogi-1.png)
 
@@ -53,12 +53,14 @@ Sebelum ke satu persatu komponen yang ada didalam arsitektur Kubernetes, perhati
 
 ![kube](/images/kube-arsitektur.jpg)
 
+dalam arsitektur kubernetes, agar mudah pembahasannya disini saya bagi dua, yaitu Master Node dan Worker Node yang dimana keduanya memiliki fungsi berbeda.
+
 ## Master Node
-Master Node adalah pusat kendali dari kluster Kubernetes. Komponen-komponen di dalamnya bertugas mengelola, memonitor, dan mengatur semua operasi yang terjadi pada Worker Node. Komponen penting pada Master Node:
+Master Node adalah pusat kendali dari kluster Kubernetes. Komponen-komponen di dalamnya bertugas mengelola, memonitor, dan mengatur semua operasi yang terjadi pada Worker Node. Komponen penting pada Master Node itu apa aja sih?
 
 **1.Kube-API Server**
 
-API Server adalah pintu gerbang utama (central communication point) untuk semua interaksi di dalam kluster Kubernetes.Tugasnya adalah menerima perintah dari pengguna (melalui kubectl atau UI lain), kemudian mendistribusikan tugas tersebut ke komponen lainnya. API Server berperan sebagai **"penghubung"** antara pengguna, Master Node, dan Worker Node.
+API Server adalah pintu gerbang utama atau **central communication point** untuk semua interaksi di dalam kluster Kubernetes. Tugasnya adalah menerima perintah dari pengguna (melalui kubectl atau UI lain), kemudian mendistribusikan tugas tersebut ke komponen lainnya. API Server berperan sebagai **"penghubung"** antara pengguna, Master Node, dan Worker Node.
 
 Bayangkan kluster Kubernetes sebagai sebuah hotel besar dengan banyak kamar (nodes), tempat tamu (aplikasi atau pod) tinggal dan beraktivitas. Dalam analogi ini, Kube-API Server adalah **resepsionis hotel**, yang menjadi penghubung antara tamu, staf hotel, dan manajemen. Ketika resepsionis menerima permintaan tamu, maka resepsionis akan berkomunikasi langsung ke staf dan manajemen hotel untuk memenuhi permintaan tersebut. Selain itu, resepsionis juga akan mencatat informasi setiap aktivitas ataupun permintaan yang nantinya akan disimpan dan dikumentasikan secara baik.
 
@@ -97,8 +99,11 @@ Ketika seorang manajer atau karyawan membutuhkan informasi misalnya, siapa yang 
 
 ![kube](/images/analogi-5.png)
 
+---
+
+
 ## Worker Node
-Worker Node adalah tempat di mana aplikasi dijalankan. Node ini menjalankan perintah yang diterima dari Master Node. Komponen utama pada Worker Node adalah:
+Worker Node adalah tempat di mana aplikasi dijalankan. Node ini menjalankan perintah yang diterima dari Master Node. Nah komponen utama pada Worker Node itu emangnya apa aja?
 
 **1.Kubelet**
 
@@ -119,6 +124,7 @@ Nah dengan begitu, Kube Proxy bisa dianalogikan seperti **juru lalu lintas udara
 
 ---
 **3.Container Runtime**
+
 Container Runtime adalah bagian dari infrastruktur yang memungkinkan kontainer berjalan di dalam node. Ia seperti mesin penggerak kontainer. Kubernetes mendukung berbagai container runtime seperti **Docker**, **containerd**, atau **CRI-O**. Tugas utama container runtime adalah menjalankan kontainer, menghentikannya, dan mengelola image kontainer. Ketika Kubelet memerintahkan untuk menjalankan sebuah Pod, container runtime-lah yang bertindak langsung untuk memulai kontainer sesuai dengan perintah tersebut. Tanpa container runtime, Kubernetes tidak bisa menjalankan aplikasi apa pun.
 
 Anggaplah ada sebuah **mesin otomatis di pabrik** yang bertugas mengambil bahan baku, mengolahnya, dan menghasilkan produk jadi. Mesin ini bekerja berdasarkan perintah dan spesifikasi yang diberikan oleh **supervisor** (kubelet) . Dalam Kubernetes, container runtime adalah mesin yang bertanggung jawab untuk menjalankan kontainer, mengelola image, dan memastikan kontainer beroperasi sesuai dengan permintaan. Tanpa mesin ini, tidak akan ada aktivitas di pabrik, dan produk tidak bisa dihasilkan.
