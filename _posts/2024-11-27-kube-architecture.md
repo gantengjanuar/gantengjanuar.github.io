@@ -1,5 +1,5 @@
 ---
-title: 'Understanding Kubernetes Architecture with Analogy'
+title: 'Memahami Kubernetes dengan Mudah dengan Analogi'
 date: 2024-11-27
 permalink: /posts/2024/11/kubernetes-architecture/
 tags:
@@ -96,3 +96,31 @@ Bisa dianalogikan, etcd sebagai **arsip perusahaan** yang mencatat semua dokumen
 Ketika seorang manajer atau karyawan membutuhkan informasi misalnya, siapa yang bertanggung jawab atas sebuah proyek atau di mana inventaris tertentu disimpan, mereka bisa langsung merujuk ke arsip tersebut untuk mendapatkan data yang akurat dan terkini. Jika ada perubahan, seperti karyawan baru yang bergabung atau proyek yang selesai, arsip ini diperbarui secara real-time sehingga semua pihak tetap memiliki informasi yang konsisten.
 
 ![kube](/images/analogi-5.png)
+
+## Worker Node
+Worker Node adalah tempat di mana aplikasi dijalankan. Node ini menjalankan perintah yang diterima dari Master Node. Komponen utama pada Worker Node adalah:
+
+**1.Kubelet**
+
+Kubelet seperti asisten pribadi di setiap node dalam cluster Kubernetes. Tugas utamanya adalah memastikan semua Pod dan kontainer yang berjalan di node tersebut sesuai dengan perintah yang diberikan oleh API Server. Kubelet secara terus-menerus memonitor status Pod dan kontainer, melaporkan kondisinya kembali ke API Server, dan memastikan semuanya tetap berjalan sebagaimana mestinya. Jika ada masalah, misalnya kontainer berhenti tiba-tiba, Kubelet akan mencoba menjalankan ulang kontainer tersebut berdasarkan definisi konfigurasi.
+
+Bisa di analogikan seperti ini, setiap kantor memiliki seorang **supervisor** (kubelet) yang memastikan bahwa semua **karyawan** (pod) menjalankan tugas mereka sesuai dengan instruksi manajer pusat. Supervisor ini terus memeriksa pekerjaan karyawan, memastikan mereka bekerja sesuai dengan rencana, dan melaporkan progresnya ke manajer. Jika ada masalah, seperti karyawan yang tidak hadir atau tugas yang tidak selesai, supervisor akan mengambil tindakan untuk memperbaikinya.
+
+![kube](/images/analogi-6.png)
+
+---
+**2.Kube-Proxy**
+
+Kube Proxy itu seperti juru lalu lintas di dalam cluster Kubernetes. Ia bertanggung jawab untuk mengatur lalu lintas jaringan antara Pod, layanan (Service), dan pengguna yang mengakses aplikasi dalam cluster. Ketika sebuah permintaan datang, Kube Proxy memastikan permintaan tersebut diarahkan ke Pod yang benar dengan cara yang efisien. Misalnya, jika sebuah layanan memiliki banyak Pod yang mendukungnya, Kube Proxy akan melakukan load balancing untuk membagi permintaan ke berbagai Pod tersebut.
+
+Nah dengan begitu, Kube Proxy bisa dianalogikan seperti **juru lalu lintas udara** di sebuah bandara besar. Tentu saja lalu lintas masuk dan keluar itu ramai donng, nah disini tugasnya juru lalu lintas udara, ia akan mengaturur lintasan supaya tidak ada tabrakan, menjaga dan memastikan lalu lintas aman, serta bisa juga menyesuaikan jalur penerbangan supaya seluruh lalu lintas antar apapun itu aman terkendali.
+
+![kube](/images/analogi-7.png)
+
+---
+**3.Container Runtime**
+Container Runtime adalah bagian dari infrastruktur yang memungkinkan kontainer berjalan di dalam node. Ia seperti mesin penggerak kontainer. Kubernetes mendukung berbagai container runtime seperti **Docker**, **containerd**, atau **CRI-O**. Tugas utama container runtime adalah menjalankan kontainer, menghentikannya, dan mengelola image kontainer. Ketika Kubelet memerintahkan untuk menjalankan sebuah Pod, container runtime-lah yang bertindak langsung untuk memulai kontainer sesuai dengan perintah tersebut. Tanpa container runtime, Kubernetes tidak bisa menjalankan aplikasi apa pun.
+
+Anggaplah ada sebuah **mesin otomatis di pabrik** yang bertugas mengambil bahan baku, mengolahnya, dan menghasilkan produk jadi. Mesin ini bekerja berdasarkan perintah dan spesifikasi yang diberikan oleh **supervisor** (kubelet) . Dalam Kubernetes, container runtime adalah mesin yang bertanggung jawab untuk menjalankan kontainer, mengelola image, dan memastikan kontainer beroperasi sesuai dengan permintaan. Tanpa mesin ini, tidak akan ada aktivitas di pabrik, dan produk tidak bisa dihasilkan.
+
+![kube](/images/analogi-8.png)
