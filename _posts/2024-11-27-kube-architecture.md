@@ -1,5 +1,5 @@
 ---
-title: 'Memahami Kubernetes dengan Mudah dengan Analogi'
+title: 'Memahami Kubernetes Dengan Mudah Menggunakan Analogi'
 date: 2024-11-27
 permalink: /posts/2024/11/kubernetes-architecture/
 tags:
