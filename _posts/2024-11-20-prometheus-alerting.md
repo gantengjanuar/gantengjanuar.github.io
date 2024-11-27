@@ -1,5 +1,5 @@
 ---
-title: 'How To Sending Alert from Prometheus to Multiple Target'
+title: 'How To Send Alerts  from Prometheus to Multiple Target'
 date: 2024-11-20
 permalink: /posts/2024/11/send-alert-to-multiple/
 tags:
@@ -32,7 +32,7 @@ Simpelnya, **Alerting** adalah proses pemberitahuan atau pengiriman notifikasi s
 ---
 
 # Langkah Pengerjaan | Implementasi
-Kali ini, saya melanjutkan blog sebelumnya yang dimana saya udah launching Instance Openstack dan memonitoring menggunakan Prometheus dan Grafana. Jika penasaran dengan blog sebelumnya,[Baca disini](https://gantengjanuar.github.io//posts/2024/11/prometheus-instance-monitoring/)
+Kali ini, saya melanjutkan blog sebelumnya yang dimana saya udah launching Instance Openstack dan memonitoring menggunakan Prometheus dan Grafana. Jika penasaran dengan blog sebelumnya, [baca disini](https://gantengjanuar.github.io//posts/2024/11/prometheus-instance-monitoring/)
 
 Pertama, saya harus lakukan Instalasi AlertManager di vm Controller.
 
@@ -137,7 +137,7 @@ WantedBy=default.target
 # systemctl start alert_manager.service
 # systemctl status alert_manager.service
 ```
-6.Buat alert untuk mendeteksi ketika **intance down**
+6.Buat alert untuk mendeteksi ketika intance mengalami **downtime**
 ```
 # cd /opt/prometheus-2.48.0.linux-amd64/
 ```
