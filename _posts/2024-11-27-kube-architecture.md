@@ -11,7 +11,9 @@ tags:
 ![alert](/images/kube-banner.png)
 
 # **Memahami Kubernetes Architecture dengan Mudah Menggunakan Analogi**
-Hellooooooww :b, disini saya akan ngebahas arsitektur dari salah satu alat orkestrasi kontainer yang sangat terkenal dan powerfull nih, yaitu **Kubernetes**. Sebelum ke praktik kubernetes, baiknya kita memahami terlebih dahulu apa aja sih komponen penting yang perlu kita kenali agar lebih memahami mengenai Kubernetes.
+Hellooooooww! 👋
+
+disini saya akan ngebahas arsitektur dari salah satu alat orkestrasi kontainer yang sangat terkenal dan powerfull nih, yaitu **Kubernetes**. Sebelum ke praktik kubernetes, baiknya kita memahami terlebih dahulu apa aja sih komponen penting yang perlu kita kenali agar lebih memahami mengenai Kubernetes.
 
 Nah supaya mudah, disini saya akan menjelaskan komponen yang ada di **Kubernetes Arsitektur** menggunakan **Analogi**!! Langsung aja kita kenalan terlebih dahulu sama Kubernetes, sebenernya Kubernetes itu apa sih?
 
@@ -130,3 +132,11 @@ Container Runtime adalah bagian dari infrastruktur yang memungkinkan kontainer b
 Anggaplah ada sebuah **mesin otomatis di pabrik** yang bertugas mengambil bahan baku, mengolahnya, dan menghasilkan produk jadi. Mesin ini bekerja berdasarkan perintah dan spesifikasi yang diberikan oleh **supervisor** (kubelet) . Dalam Kubernetes, container runtime adalah mesin yang bertanggung jawab untuk menjalankan kontainer, mengelola image, dan memastikan kontainer beroperasi sesuai dengan permintaan. Tanpa mesin ini, tidak akan ada aktivitas di pabrik, dan produk tidak bisa dihasilkan.
 
 ![kube](/images/analogi-8.png)
+
+---
+
+Nah gimana nih? memahami komponen utama yang ada di arsitektur Kubernetes ini cukup mudah kan dengan adanya analogi? karena dengan analogi kita bisa memudahkan pemahaman terhadap sesuatu yang cukup ribet, namun untuk pendalaman lebih dalam lagi disarankan untuk baca dokumentasi resmi dari dokumentasi resminya ya!
+
+## Referensi
+
+- [Kubernetes.io](https://kubernetes.io/docs/home/)
