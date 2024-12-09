@@ -22,5 +22,5 @@ sebelum itu, Object di Kubernetes itu apasih? dan ada apa saja?
 
 ![daftar-object](/images/daftar-object.png)
 
-
+-brb-
 
