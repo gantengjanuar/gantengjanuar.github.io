@@ -20,10 +20,12 @@ main:
   - title: "Portfolio"
     url: /portfolio/
 
+  - title: "Certification"
+    url: /certification/     
+
   - title: "CV"
     url: /files/CV.pdf
 
-  - title: "Certification"
-    url: /certification/     
+
     
 
