@@ -11,8 +11,7 @@ main:
  # - title: "Talks"
  #   url: /talks/    
 
-#  - title: "Teaching"
- #   url: /teaching/    
+   
   
   
   - title: "Blog Posts"
@@ -23,5 +22,8 @@ main:
 
   - title: "CV"
     url: /files/CV.pdf
+
+  - title: "certification"
+    url: /Certification/     
     
 
