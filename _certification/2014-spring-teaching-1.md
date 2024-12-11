@@ -2,9 +2,9 @@
 title: "Teaching experience 1"
 collection: certification
 type: "Undergraduate course"
-permalink: /certification/2014-spring-teaching-1
+permalink: /certification/Certificate of Completion
 venue: "University 1, Department"
-date: 2014-01-01
+date: 2024-11-12
 location: "City, Country"
 ---
 

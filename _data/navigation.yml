@@ -8,8 +8,7 @@ main:
  # - title: "Publications"
  #   url: /publications/
 
- # - title: "Talks"
- #   url: /talks/    
+
 
    
   
@@ -21,7 +20,11 @@ main:
     url: /portfolio/
 
   - title: "Certification"
-    url: /certification/     
+    url: /talks/    
+
+
+#  - title: "Certification"
+#    url: /certification/     
 
   - title: "CV"
     url: /files/CV.pdf
