@@ -169,7 +169,7 @@ Persistent Volume (PV) dan Persistent Volume Claim (PVC) adalah dua komponen dal
 Bayangkan sebuah PV sebagai gudang besar yang dimiliki oleh sebuah perusahaan. Gudang ini dapat menampung banyak barang dan menyediakan ruang untuk berbagai kebutuhan. Namun, agar dapat menggunakan gudang ini, tim atau departemen tertentu perlu mengajukan permintaan ruang dengan menentukan ukuran dan kebutuhan mereka. Permintaan ini adalah PVC, yang merupakan sebagian dari gudang yang dikhususkan untuk mereka.
 
 ---
-![pv](/images/pv.png)
+![pv](/images/pv-c.png)
 
 ---
 ### Contoh Konfigurasi PV dan PVC
