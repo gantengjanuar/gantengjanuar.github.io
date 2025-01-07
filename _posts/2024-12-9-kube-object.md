@@ -52,7 +52,20 @@ Bayangkan Pod sebagai **meja** di restoran. Meja ini dapat digunakan oleh satu t
 ![pod](/images/pod.png)
 
 ### Contoh konfigurasi
-![carbon](/images/pod-c.png)
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+```
 
 ---
 
@@ -73,7 +86,22 @@ Bayangkan cluster Kubernetes sebagai sekelompok pulau, di mana setiap pulau adal
 ![service](/images/service.png)
 
 ### Contoh Konfigurasi
-![carbon](/images/service-c.png)
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+```
 
 ## Ingress
 
@@ -87,7 +115,26 @@ Pada ingress, ada yang disebut sebagai **ingress controller**. Agar gerbang utam
 ![service](/images/ingress.png)
 
 ### Contoh Konfigurasi
-![service](/images/ingress-c.png)
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: example-service
+            port:
+              number: 80
+```
 ---
 
 ## Volume
@@ -98,8 +145,23 @@ Bayangkan Volume sebagai gudang pada sebuah mansion. **Gudang** adalah tempat pe
 ---
 ![service](/images/volume.png)
 
-### Contoh Konfigurasi
-![carbon](/images/volume-c.png)
+### Contoh Konfigurasi menggunakan Volume pada pod
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+spec:
+  containers:
+  - name: example-container
+    image: nginx
+    volumeMounts:
+    - name: example-volume
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: example-volume
+    emptyDir: {}
+```
 
 ## Persistent Volume (PV) & Persistent Volume Claim (PVC)
 Persistent Volume (PV) dan Persistent Volume Claim (PVC) adalah dua komponen dalam Kubernetes yang bekerja bersama untuk menyediakan penyimpanan persisten bagi Pod. PV adalah sumber daya penyimpanan yang disediakan oleh administrator cluster, sementara PVC adalah permintaan untuk sumber daya tersebut oleh pengguna.
@@ -111,7 +173,33 @@ Bayangkan sebuah PV sebagai gudang besar yang dimiliki oleh sebuah perusahaan. G
 
 ---
 ### Contoh Konfigurasi PV dan PVC
-![pv](/images/pvc.png)
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: example-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data
+```
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: example-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+```
 
 ## Namespace
 Namespace adalah mekanisme Kubernetes untuk mengisolasi dan mengelola resource dalam suatu cluster. Namespace memungkinkan kita membagi cluster besar menjadi bagian-bagian kecil yang lebih terorganisir dan terisolasi. Dengan Namespace, Anda kita memastikan bahwa resource tidak saling tumpang tindih dan memberikan kontrol lebih baik pada pengaturan akses.
@@ -122,8 +210,6 @@ Bayangkan sebuah gedung perkantoran besar yang memiliki banyak ruangan, di mana 
 ![namespace](/images/ns.png)
 
 ### Contoh Konfigurasi
-![ns](/images/ns-c.png)
-
 ```yaml
 apiVersion: v1
 kind: Namespace
