@@ -53,6 +53,7 @@ Bayangkan Pod sebagai **meja** di restoran. Meja ini dapat digunakan oleh satu t
 
 ### Contoh konfigurasi
 ![carbon](/images/pod-c.png)
+
 ---
 
 ## Service
@@ -81,6 +82,7 @@ Ingress dalam Kubernetes adalah komponen yang mengatur lalu lintas masuk (traffi
 Bayangkan sebuah perusahaan besar dengan berbagai departemen di dalamnya, seperti HR, IT, dan Keuangan. Semua orang yang ingin mengakses departemen ini harus masuk melalui gerbang utama. Ingress dalam analogi ini adalah **gerbang utama** perusahaan. Gerbang ini memiliki aturan jelas dimana orang yang datang harus diarahkan ke departemen tertentu berdasarkan tujuan mereka. Misalnya, permintaan ke "hr.perusahaan.com" akan diarahkan ke departemen HR
 
 Pada ingress, ada yang disebut sebagai **ingress controller**. Agar gerbang utama dapat bekerja dengan baik, dibutuhkan seseorang yang memastikan setiap tamu diarahkan ke tempat yang tepat. Di sinilah Ingress Controller berperan. Ingress Controller adalah **resepsionis perusahaan** yang menerima setiap tamu di gerbang utama, membaca informasi tujuan mereka, dan memastikan mereka sampai ke departemen yang benar.
+
 ---
 ![service](/images/ingress.png)
 
@@ -121,3 +123,10 @@ Bayangkan sebuah gedung perkantoran besar yang memiliki banyak ruangan, di mana 
 
 ### Contoh Konfigurasi
 ![ns](/images/ns-c.png)
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: example-namespace
+```
