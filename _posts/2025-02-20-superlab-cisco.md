@@ -1,6 +1,6 @@
 ---
 title: 'Cisco: Superlab '
-date: 2024-11-10
+date: 2025-02-20
 permalink: /posts/2025/02/deploy-openstack/
 tags:
   - Openstack
