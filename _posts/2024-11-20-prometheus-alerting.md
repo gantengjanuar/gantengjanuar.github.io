@@ -12,7 +12,7 @@ tags:
 ![alert](/images/alert.png)
 
 # **Sending Alert from Prometheus to Multiple Target**
-Hallo halloo, sebelumnya saya udah berhasil monitoring Instance yang berada di Openstack cluster menggunakan Prometheus dan Grafana sebagai visualisasinya yang saya dokumentasikan [ disini](https://gantengjanuar.github.io//posts/2024/11/prometheus-instance-monitoring/), nah sekarang merupakan tahap lanjutan dari monitoring nih, yaitu **Alerting**
+Hallo halloo, sebelumnya saya udah berhasil monitoring Instance yang berada di Openstack cluster menggunakan Prometheus dan Grafana sebagai visualisasinya yang saya dokumentasikan [ disini](https://gantengjanuar.sytes.net//posts/2024/11/prometheus-instance-monitoring/), nah sekarang merupakan tahap lanjutan dari monitoring nih, yaitu **Alerting**
 
 Disini, saya mengirim alert ke berbagai platform yaitu **Gmail**, **Discord**, dan juga **Slack** yang tentunya akan ngebikin alert kita makin lengkap.
 
@@ -32,7 +32,7 @@ Simpelnya, **Alerting** adalah proses pemberitahuan atau pengiriman notifikasi s
 ---
 
 # Langkah Pengerjaan | Implementasi
-Kali ini, saya melanjutkan blog sebelumnya yang dimana saya udah launching Instance Openstack dan memonitoring menggunakan Prometheus dan Grafana. Jika penasaran dengan blog sebelumnya, [baca disini](https://gantengjanuar.github.io//posts/2024/11/prometheus-instance-monitoring/)
+Kali ini, saya melanjutkan blog sebelumnya yang dimana saya udah launching Instance Openstack dan memonitoring menggunakan Prometheus dan Grafana. Jika penasaran dengan blog sebelumnya, [baca disini](https://gantengjanuar.sytes.net//posts/2024/11/prometheus-instance-monitoring/)
 
 Pertama, saya harus lakukan Instalasi AlertManager di vm Controller.
 

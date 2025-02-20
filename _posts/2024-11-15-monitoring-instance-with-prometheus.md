@@ -39,7 +39,7 @@ Pada kesempatan kali ini, saya akan Launching Instance yang nantinya dipasangkan
 > **Note** : Seluruh langkah pengerjaan disini adalah pengerjaan sendiri, sehingga mungkin jika anda ingin mencoba melakukannya juga, anda bisa menyesuaikan dengan environment anda sendiri, seperti penamaan ataupun IP dari VM.
 
 ## 1. Openstack
-Pertama-tama, pastikan sudah melakukan Instalasi atau deployment Openstack terlebih dahulu, jika belum bisa ikuti panduan ini [How To Deploy Openstack With Kolla-Ansible](https://gantengjanuar.github.io//posts/2024/11/deploy-openstack/)
+Pertama-tama, pastikan sudah melakukan Instalasi atau deployment Openstack terlebih dahulu, jika belum bisa ikuti panduan ini [How To Deploy Openstack With Kolla-Ansible](https://gantengjanuar.sytes.net//posts/2024/11/deploy-openstack/)
 
 ## 2. Prometheus
 Lakukan instalasi Prometheus Server di node controller, seperti ini:

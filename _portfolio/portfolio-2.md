@@ -16,7 +16,7 @@ Untuk launching Instance nya saya juga menambahkan **cloud-init** supaya ketika 
 
 ---
 ## Hasil Akhir Project
-Saya berhasil membuat Dashboard yang akan digunakan untuk memantau kondisi sebuah Instance secara full, dimulai dari kondisi Disk, CPU, Memory, Network, dll, Selain itu saya juga membuat Alert untuk Instance yang akan dikirim via Gmail, Discord, dan Slack. Saya juga membuat Blog berisi Dokumentasi yang bisa dibaca dan dilihat [disini | Instance Monitoring](https://gantengjanuar.github.io//posts/2024/11/prometheus-instance-monitoring/) dan [disini | Alerting](https://gantengjanuar.github.io//posts/2024/11/prometheus-instance-monitoring/)
+Saya berhasil membuat Dashboard yang akan digunakan untuk memantau kondisi sebuah Instance secara full, dimulai dari kondisi Disk, CPU, Memory, Network, dll, Selain itu saya juga membuat Alert untuk Instance yang akan dikirim via Gmail, Discord, dan Slack. Saya juga membuat Blog berisi Dokumentasi yang bisa dibaca dan dilihat [disini | Instance Monitoring](https://gantengjanuar.sytes.net//posts/2024/11/prometheus-instance-monitoring/) dan [disini | Alerting](https://gantengjanuar.sytes.net//posts/2024/11/prometheus-instance-monitoring/)
 
 ---
 ## Dashboard | Basic Info

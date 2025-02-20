@@ -38,7 +38,7 @@ Setiap instance atau resource yang diproteksi dapat dihubungkan dengan satu atau
 
 ---
 # Langkah Pengerjaan | Implementasi
-Pada kesempatan kali ini, saya akan Launching Instance webserver yang akan dipasangkan nginx dan Instance Databases yang akan dipasangkan MySQL. Pertama-tama, pastikan sudah melakukan Instalasi atau deployment Openstack terlebih dahulu, jika belum bisa ikuti panduan ini [How To Deploy Openstack With Kolla-Ansible](https://gantengjanuar.github.io//posts/2024/11/deploy-openstack/)
+Pada kesempatan kali ini, saya akan Launching Instance webserver yang akan dipasangkan nginx dan Instance Databases yang akan dipasangkan MySQL. Pertama-tama, pastikan sudah melakukan Instalasi atau deployment Openstack terlebih dahulu, jika belum bisa ikuti panduan ini [How To Deploy Openstack With Kolla-Ansible](https://gantengjanuar.sytes.net//posts/2024/11/deploy-openstack/)
 
 1.Aktifkan admin kredensial dan aktifkan virtual env.
 ```

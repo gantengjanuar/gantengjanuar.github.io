@@ -14,7 +14,7 @@ Pada project ini, saya mengatasi masalah yang dimana tim Operasi mengalami kesul
 
 ---
 ## Hasil Akhir Project
-Saya berhasil membuat dua Dashboard yang akan digunakan untuk memantau Instance, selain itu saya juga membuat Alert untuk Instance. Saya juga membuat Blog berisi Dokumentasi full yang bisa dibaca dan dilihat [disini](https://gantengjanuar.github.io//posts/2024/11/instance-log-collecting/) 
+Saya berhasil membuat dua Dashboard yang akan digunakan untuk memantau Instance, selain itu saya juga membuat Alert untuk Instance. Saya juga membuat Blog berisi Dokumentasi full yang bisa dibaca dan dilihat [disini](https://gantengjanuar.sytes.net//posts/2024/11/instance-log-collecting/) 
 
 ---
 ## Dashboard | node1-gan
