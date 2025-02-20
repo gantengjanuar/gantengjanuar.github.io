@@ -50,6 +50,7 @@ enable
 configure terminal
 hostname SW1
 ```
+> **Note** : Lakukan pada semua switch, dengan contoh switch satu namanya SW1, switch 2 SW2, dan seterusnya
 
 ### Core Switch 1 dan 2
 
@@ -60,6 +61,7 @@ enable
 configure terminal
 hostname CSW1
 ```
+> **Note** : Lakukan pada semua Core switch, dengan contoh core switch 1 namanya CSW1, core switch 2 CSW2, dan seterusnya
 
 ### Router 1 sampai 3
 
@@ -70,6 +72,8 @@ enable
 configure terminal
 hostname RTR1
 ```
+
+> **Note** : Lakukan pada semua Router, dengan contoh Router 1 namanya RTR1, Router 2 RTR2, dan seterusnya
 
 2\. Konfigurasi Enable Secret
 -----------------------------
@@ -619,7 +623,9 @@ Part 7 - Configure DNS & Web Server
 </html>
 ```
 
-1.  Simpan Perubahan
+7.  Simpan Perubahan
+
+---
 
 ### Verifikasi DNS & Web Server
 
