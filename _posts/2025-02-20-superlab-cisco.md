@@ -8,11 +8,21 @@ tags:
   - Superlab
 ---
 
+![thumbnail](/images/thumbnail.png)
+
+---
+
 # CISCO CCNA  SUPERLAB - 1
 
 
-Topologi & Objective
---------------------
+## Logical Topology
+![topologi](/images/l-topologi.png)
+
+---
+
+## Physical Topology
+![topologi](/images/p-topologi.png)
+---
 
 Superlab ini dirancang untuk menguji pemahaman serta keterampilan dalam mengonfigurasi jaringan berbasis Cisco, dengan mencakup berbagai teknologi inti yang umum digunakan dalam lingkungan enterprise. Dalam lab ini, kita akan mengimplementasikan VLAN, trunking, routing OSPF, akses kontrol (ACL), serta konfigurasi server seperti DNS dan Web Server.
 
@@ -380,6 +390,7 @@ dns-server 192.168.90.2
 exit
 ```
 
+---
 ### Configure IP Address on SVR1 & SVR2 manually
 
 Atur IP secara manual:
