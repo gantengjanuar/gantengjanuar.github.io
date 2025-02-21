@@ -1,14 +1,14 @@
 ---
 title: 'Cisco: Superlab '
 date: 2025-02-20
-permalink: /posts/2025/02/deploy-openstack/
+permalink: /posts/2025/02/cisco-superlab-1/
 tags:
   - Cisco Packet Tracer
   - Networking
   - Superlab
 ---
 
-# CISCO CCNA 200-301 SUPERLAB - 1
+# CISCO CCNA  SUPERLAB - 1
 
 
 Topologi & Objective
