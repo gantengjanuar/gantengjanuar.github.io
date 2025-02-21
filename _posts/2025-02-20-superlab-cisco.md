@@ -703,3 +703,28 @@ PC pada VLAN10 dan VLAN60 ketika akses web:
 
 PC pada VLAN10 dan VLAN60 ketika ping ke server:
 ![v](/images/v-p8-2.png)
+
+## Hasil Akhir Keseluruhan
+
+Dan yap, semua objective objective yang saya awal sudah saya eksekusi dengan sesuai, saya sudah berhasil melakukan:
+1.  Mengonfigurasi hostname dan enable secret pada semua router & switch.
+
+2.  Membangun VLAN & Trunking di berbagai switch dengan SVI dan DHCP Server.
+
+3.  Mengimplementasikan Router on Stick pada router.
+
+4.  Mengonfigurasi OSPF agar seluruh router dapat berkomunikasi.
+
+5.  Mengimplementasikan layanan DNS dan Web Server.
+
+6.  Menggunakan Access List untuk membatasi akses ke server dari VLAN tertentu.
+
+Yang dimana hasil Verifikasi tiap part nya sudah saya berikan di akhir part masing masing.
+
+## Kesimpulan
+
+Setiap langkah dalam lab ini dirancang untuk memberikan pengalaman langsung dalam membangun dan mengelola jaringan berbasis Cisco. 
+Dengan menerapkan konfigurasi ini, kita tidak hanya memahami konsep dasar networking tetapi juga mendapatkan keterampilan praktis yang dapat digunakan dalam lingkungan kerja nyata.
+Semoga dokumentasi ini bermanfaat bagi siapa saja yang ingin memperdalam pemahaman mereka tentang konfigurasi jaringan menggunakan perangkat Cisco. Jika Anda memiliki pertanyaan atau ingin berdiskusi lebih lanjut, jangan ragu untuk menghubungi saya melalui blog ini.
+
+Terima kasih telah mengikuti dokumentasi ini, dan semoga sukses dalam perjalanan belajar jaringan Anda! 🚀💻
