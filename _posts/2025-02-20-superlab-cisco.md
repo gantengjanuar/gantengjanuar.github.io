@@ -22,6 +22,7 @@ tags:
 
 ## Physical Topology
 ![topologi](/images/p-topologi.png)
+
 ---
 
 Superlab ini dirancang untuk menguji pemahaman serta keterampilan dalam mengonfigurasi jaringan berbasis Cisco, dengan mencakup berbagai teknologi inti yang umum digunakan dalam lingkungan enterprise. Dalam lab ini, kita akan mengimplementasikan VLAN, trunking, routing OSPF, akses kontrol (ACL), serta konfigurasi server seperti DNS dan Web Server.
@@ -44,6 +45,7 @@ Topologi yang digunakan terdiri dari beberapa switch dan router yang dikonfigura
 
 Pada dokumentasi ini, setiap bagian akan dijelaskan secara rinci, termasuk langkah-langkah konfigurasi dan verifikasi hasil untuk memastikan pengerjaan sudah sesuai.
 
+>**Note**: Tiap step dibawah yang memerlukan untuk menjalankan **command**, itu semua harus dilakukan dalam **CLI**, Misal pada part 1 mengkonfigurasi hostname switch, buka switch lalu masuk ke bagian **CLI** baru jalankan Command nya 
 
 Part 1 - Basic Configuration
 ============================
@@ -645,7 +647,7 @@ Part 7 - Configure DNS & Web Server
 </html>
 ```
 
-7.  Simpan Perubahan
+**Simpan Perubahan**
 
 ---
 
@@ -725,6 +727,6 @@ Yang dimana hasil Verifikasi tiap part nya sudah saya berikan di akhir part masi
 
 Setiap langkah dalam lab ini dirancang untuk memberikan pengalaman langsung dalam membangun dan mengelola jaringan berbasis Cisco. 
 Dengan menerapkan konfigurasi ini, kita tidak hanya memahami konsep dasar networking tetapi juga mendapatkan keterampilan praktis yang dapat digunakan dalam lingkungan kerja nyata.
-Semoga dokumentasi ini bermanfaat bagi siapa saja yang ingin memperdalam pemahaman mereka tentang konfigurasi jaringan menggunakan perangkat Cisco. Jika Anda memiliki pertanyaan atau ingin berdiskusi lebih lanjut, jangan ragu untuk menghubungi saya melalui blog ini.
+Semoga dokumentasi ini bermanfaat bagi siapa saja yang ingin memperdalam pemahaman mereka tentang konfigurasi jaringan menggunakan perangkat Cisco.
 
 Terima kasih telah mengikuti dokumentasi ini, dan semoga sukses dalam perjalanan belajar jaringan Anda! 🚀💻
