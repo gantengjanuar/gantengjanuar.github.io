@@ -42,7 +42,7 @@ Topologi yang digunakan terdiri dari beberapa switch dan router yang dikonfigura
 
 6.  Menggunakan Access List untuk membatasi akses ke server dari VLAN tertentu.
 
-Pada dokumentasi ini, setiap bagian akan dijelaskan secara rinci, termasuk langkah-langkah konfigurasi dan verifikasi hasil untuk memastikan jaringan berfungsi dengan baik.
+Pada dokumentasi ini, setiap bagian akan dijelaskan secara rinci, termasuk langkah-langkah konfigurasi dan verifikasi hasil untuk memastikan pengerjaan sudah sesuai.
 
 
 Part 1 - Basic Configuration
@@ -97,7 +97,13 @@ enable secret cisco
 exit
 write memory
 ```
+## Verifikasi Hostname Part-1
 
+Jika sudah, nanti semua hostname akan berubah sesuai yang kita ganti, contoh menjadi `SW1` `SW2` dan seterusnya.
+
+![v](/images/v-p1.png)
+
+---
 
 Part 2 - Configure VLAN & Trunking in Core-SW2 & SW4
 ====================================================
@@ -200,15 +206,18 @@ default-router 192.168.30.1
 dns-server 192.168.90.2
 ```
 
-5\. Verifikasi dengan Ping Tiap PC
+5\. Verifikasi dengan Ping Tiap PC - Part 2
 ----------------------------------
+Hasil ping pc ke pc pada vlan10. vlan20. vlan30
+![v](/images/v-p2.png)
 
-Jika tidak bisa melakukan ping, gunakan command berikut untuk troubleshooting:
+> Note: Jika tidak bisa melakukan ping, gunakan command berikut untuk troubleshooting:
 
 ```
 show vlan brief # Cek VLAN
 show interfaces trunk # Cek Trunk ke Core-SW2
 ```
+
 
 Part 3 - Configure VLAN & Trunking in Core-SW1, SW1, & SW2
 ----------------------------------------------------------
@@ -318,7 +327,10 @@ ip dhcp pool VLAN70
 exit
 ```
 
-**Verifikasi dengan Ping tiap PC**
+## Verifikasi dengan Ping tiap PC - Part  3
+Hasil ping pc ke pc pada vlan40, vlan50, vlan60, vlan70:
+![v](/images/v-p3.png)
+
 
 Part 4 - Configure VLAN & Trunking in Core-RTR3 & SW3
 -----------------------------------------------------
@@ -407,15 +419,10 @@ Langkah:
 
 -   Masukkan **IP Address**, **Subnet Mask**, **Gateway (192.168.90.1)**, dan **DNS Server (192.168.90.2)**
 
-### Verifikasi Koneksi
+## Verifikasi Koneksi - Part 4
 
-Pastikan semua PC dan server bisa **ping** satu sama lain dengan perintah:
-
-```
-ping 192.168.80.x
-ping 192.168.90.x
-```
----
+Pastikan semua PC dan server pada vlan80 dan vlan90 bisa **ping** satu sama lain:
+![v](/images/v-p4.png)
 
 Part 5 - Configure Point to Point Addressing Between Routers
 ------------------------------------------------------------
@@ -495,9 +502,10 @@ interface fastEthernet0/1
 exit
 ```
 
-### Verifikasi Koneksi
+## Verifikasi Koneksi - Part 5
 
 Pastikan semua router bisa saling ping dan Core-Switch2 serta Core-Switch3 dapat melakukan ping ke Router2:
+![v](/images/v-p5.png)
 
 ---
 
@@ -570,7 +578,10 @@ router ospf 1
 exit
 ```
 
-**Pastikan semua PC bisa saling ping.**
+## Verifikasi Ping semua PC - Part 6
+
+Pastikan semua pc bisa saling melakukan **Ping**:
+![v](/images/v-p6.png)
 
 ---
 
@@ -625,7 +636,7 @@ Part 7 - Configure DNS & Web Server
 
 5.  Klik Tab index.html dan klik (edit)
 
-6.  Ubah Konten Halaman Web dengan:
+6.  Ubah Konten Halaman Web untuk menampilkan kata "Welcome to AgunaCourse.com" contoh:
 
 ```
 <html>
@@ -638,7 +649,7 @@ Part 7 - Configure DNS & Web Server
 
 ---
 
-### Verifikasi DNS & Web Server
+## Verifikasi DNS & Web Server - Part 7
 
 **Lakukan di semua PC:**
 
@@ -653,6 +664,8 @@ Part 7 - Configure DNS & Web Server
 5.  Tekan Enter
 
 6.  Jika benar maka akan muncul tulisan: `Welcome to AgunaCourse.com`
+
+![v](/images/v-p7.png)
 
 ---
 
@@ -681,6 +694,12 @@ interface FastEthernet0/0
  ip access-group 101 in
 ```
 
-### Verifikasi ACL
+## Verifikasi ACL - Part 8
 
 Pastikan PC pada VLAN10 dan VLAN60 tidak bisa membuka web dan tidak bisa ping ke server.
+
+PC pada VLAN10 dan VLAN60 ketika akses web:
+![v](/images/v-p8.png)
+
+PC pada VLAN10 dan VLAN60 ketika ping ke server:
+![v](/images/v-p8-2.png)
