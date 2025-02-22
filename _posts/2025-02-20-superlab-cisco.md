@@ -42,12 +42,15 @@ tags:
 |-----------       |----------------   |----------------|
 | Fa0/1            | 10.10.10.14/30    | 10.10.10.10/30 |
 
+---
 
 ### Server
 | Server   | IP Address      |
 |----------|-----------------|
 | Server1  | 192.168.90.2/24 |
 | Server2  | 192.168.90.3/24 |
+
+---
 
 ### VLAN
 | VLAN   | IP Address      |
@@ -62,11 +65,14 @@ tags:
 | VLAN80 | 192.168.80.0/24 |
 | VLAN90 | 192.168.90.0/24 |
 
+---
+
 ### DNS Server
 | Service    | IP Address    |
 |------------|---------------|
 | DNS Server | 192.168.90.2  |
 
+---
 
 Superlab ini dirancang untuk menguji pemahaman serta keterampilan dalam mengonfigurasi jaringan berbasis Cisco, dengan mencakup berbagai teknologi inti yang umum digunakan dalam lingkungan enterprise. Dalam lab ini, kita akan mengimplementasikan VLAN, trunking, routing OSPF, akses kontrol (ACL), serta konfigurasi server seperti DNS dan Web Server.
 
