@@ -44,13 +44,13 @@ tags:
 
 
 ### Server
-| Server   | IP Address     |
-|----------|--------------|
+| Server   | IP Address      |
+|----------|-----------------|
 | Server1  | 192.168.90.2/24 |
 | Server2  | 192.168.90.3/24 |
 
 ### VLAN
-| VLAN   | IP Address       |
+| VLAN   | IP Address      |
 |--------|-----------------|
 | VLAN10 | 192.168.10.0/24 |
 | VLAN20 | 192.168.20.0/24 |
@@ -63,7 +63,7 @@ tags:
 | VLAN90 | 192.168.90.0/24 |
 
 ### DNS Server
-| Service    | IP Address     |
+| Service    | IP Address    |
 |------------|---------------|
 | DNS Server | 192.168.90.2  |
 
