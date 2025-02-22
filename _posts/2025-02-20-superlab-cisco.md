@@ -25,6 +25,49 @@ tags:
 
 ---
 
+## Ketentuan IP Address
+
+
+### Router
+
+| Interface | Core-RTR1       | Core-RTR2       | Core-RTR3       |
+|-----------|----------------|----------------|----------------|
+| Fa0/0     | 10.10.10.1/30  | 10.10.10.13/30 | 10.10.10.6/30  |
+| Fa0/1     | 10.10.10.5/30  | 10.10.10.9/30  |                |
+| Fa1/0     | 10.10.10.2/30  |                |                |
+
+### Core-Switch
+
+| Interface        | Core-Switch1      | Core-Switch2    |
+|-----------       |----------------   |----------------|
+| Fa0/1            | 10.10.10.14/30    | 10.10.10.10/30 |
+
+
+### Server
+| Server   | IP Address     |
+|----------|--------------|
+| Server1  | 192.168.90.2/24 |
+| Server2  | 192.168.90.3/24 |
+
+### VLAN
+| VLAN   | IP Address       |
+|--------|-----------------|
+| VLAN10 | 192.168.10.0/24 |
+| VLAN20 | 192.168.20.0/24 |
+| VLAN30 | 192.168.30.0/24 |
+| VLAN40 | 192.168.40.0/24 |
+| VLAN50 | 192.168.50.0/24 |
+| VLAN60 | 192.168.60.0/24 |
+| VLAN70 | 192.168.70.0/24 |
+| VLAN80 | 192.168.80.0/24 |
+| VLAN90 | 192.168.90.0/24 |
+
+### DNS Server
+| Service    | IP Address     |
+|------------|---------------|
+| DNS Server | 192.168.90.2  |
+
+
 Superlab ini dirancang untuk menguji pemahaman serta keterampilan dalam mengonfigurasi jaringan berbasis Cisco, dengan mencakup berbagai teknologi inti yang umum digunakan dalam lingkungan enterprise. Dalam lab ini, kita akan mengimplementasikan VLAN, trunking, routing OSPF, akses kontrol (ACL), serta konfigurasi server seperti DNS dan Web Server.
 
 Topologi yang digunakan terdiri dari beberapa switch dan router yang dikonfigurasi untuk mendukung komunikasi antar VLAN serta akses ke berbagai layanan jaringan.
