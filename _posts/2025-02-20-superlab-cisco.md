@@ -38,7 +38,7 @@ tags:
 
 ### Core-Switch
 
-| Interface        | Core-Switch1      | Core-Switch2    |
+| Interface        | Core-Switch1      | Core-Switch2   |
 |-----------       |----------------   |----------------|
 | Fa0/1            | 10.10.10.14/30    | 10.10.10.10/30 |
 
@@ -88,7 +88,12 @@ Topologi yang digunakan terdiri dari beberapa switch dan router yang dikonfigura
 
 Pada dokumentasi ini, setiap bagian akan dijelaskan secara rinci, termasuk langkah-langkah konfigurasi dan verifikasi hasil untuk memastikan pengerjaan sudah sesuai.
 
+Untuk Melihat task secara lengkap klik link ini untuk download File `.pka` -> [Download superlab1.pka](/files/superlab1.pka)
+
 >**Note**: Tiap step dibawah yang memerlukan untuk menjalankan **command**, itu semua harus dilakukan dalam **CLI**, Misal pada part 1 mengkonfigurasi hostname switch, buka switch lalu masuk ke bagian **CLI** baru jalankan Command nya 
+
+---
+
 
 Part 1 - Basic Configuration
 ============================
@@ -464,6 +469,8 @@ Langkah:
 
 -   Masukkan **IP Address**, **Subnet Mask**, **Gateway (192.168.90.1)**, dan **DNS Server (192.168.90.2)**
 
+![svr](/images/svr-ip.png)
+
 ## Verifikasi Koneksi - Part 4
 
 Pastikan semua PC dan server pada vlan80 dan vlan90 bisa **ping** satu sama lain:
@@ -623,7 +630,12 @@ router ospf 1
 exit
 ```
 
-## Verifikasi Ping semua PC - Part 6
+## Verifikasi OSPF dan Ping semua PC - Part 6
+OSPF neighborship statusnya **UP** didalam semua routers
+```
+show ip ospf neighbor
+show ip route ospf
+```
 
 Pastikan semua pc bisa saling melakukan **Ping**:
 ![v](/images/v-p6.png)
@@ -657,6 +669,7 @@ Part 7 - Configure DNS & Web Server
 
     -   Klik Add
 
+
 6.  Tambahkan CNAME Record:
 
     -   Domain Name: www.agunacourse.com
@@ -664,6 +677,7 @@ Part 7 - Configure DNS & Web Server
     -   Alias: agunacourse.com
 
     -   Klik Add
+![svr](/images/svr-dns.png)
 
 7.  Simpan Konfigurasi
 
@@ -764,12 +778,15 @@ Dan yap, semua objective objective yang saya awal sudah saya eksekusi dengan ses
 
 6.  Menggunakan Access List untuk membatasi akses ke server dari VLAN tertentu.
 
-Yang dimana hasil Verifikasi tiap part nya sudah saya berikan di akhir part masing masing.
+Yang dimana hasil **Verifikasi** tiap part nya sudah saya berikan di akhir part masing masing.
+
+> Untuk **Download** hasil pengerjaan saya, bisa klik link -> [Download](/files/PRAKTEK%20CISCO%20SUPERLAB%20Ganteng%20Januar%20.pka) 
 
 ## Kesimpulan
 
 Setiap langkah dalam lab ini dirancang untuk memberikan pengalaman langsung dalam membangun dan mengelola jaringan berbasis Cisco. 
 Dengan menerapkan konfigurasi ini, kita tidak hanya memahami konsep dasar networking tetapi juga mendapatkan keterampilan praktis yang dapat digunakan dalam lingkungan kerja nyata.
 Semoga dokumentasi ini bermanfaat bagi siapa saja yang ingin memperdalam pemahaman mereka tentang konfigurasi jaringan menggunakan perangkat Cisco.
+
 
 Terima kasih telah mengikuti dokumentasi ini, dan semoga sukses dalam perjalanan belajar jaringan Anda! 🚀💻
