@@ -9,7 +9,7 @@ redirect_from:
 
 
 ![hi](/images/hi-2.png){: .align-right width="300px"}
-🎓 I am a 12th grade student at SMKN 3 Depok.
+🎓 I am a Fresh Graduate from SMKN 3 Depok.
 
 👨🏻‍💻 My interest in IT is quite high, especially in the field of Cloud engineer and DevOps engineer.
 
@@ -22,4 +22,11 @@ redirect_from:
 ---
 ![gann](/images/gan.gif){: .align-center width="100%"}
 
+## Selected Experience
+
+💼 **PT. Boer Technology — Student Internship (Jul 2024 – Nov 2024)**  
+Hands-on with cloud and DevOps tools such as OpenStack, Docker, Kubernetes, Elastic Stack, and Prometheus-Grafana. Automated OpenStack deployment, managed cloud instances, implemented centralized logging, monitoring, and alerting systems.
+
+🧑‍🏫 **PT. Boer Technology — Support Team Bootcamp Cloud Engineer (Dec 2024 – Jan 2025)**  
+Supported bootcamp participants in learning Ceph, OpenStack, and Kubernetes. Acted as a live session moderator, provided daily technical guidance, and collaborated with instructors to troubleshoot participant issues.
 
